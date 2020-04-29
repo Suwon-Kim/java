@@ -1,7 +1,7 @@
 /*
-	¿¹¿ÜÃ³¸®
-	1. try-catch : ¿¹¿Ü»óÈ²À» Á÷Á¢Ã³¸®
-	2. throws : ¿¹¿ÜÃ³¸® Ã¥ÀÓÀ» È£ÃâÇÑ ÂÊÀ¸·Î Àü°¡
+	ì˜ˆì™¸ì²˜ë¦¬
+	1. try-catch : ì˜ˆì™¸ìƒí™©ì„ ì§ì ‘ì²˜ë¦¬
+	2. throws : ì˜ˆì™¸ì²˜ë¦¬ ì±…ì„ì„ í˜¸ì¶œí•œ ìª½ìœ¼ë¡œ ì „ê°€
 */
 import java.io.*;
 class ExceptionEx1 {
@@ -11,7 +11,7 @@ class ExceptionEx1 {
 	public static void second() throws FileNotFoundException {
 		FileReader fr = new FileReader("a.txt");
 	}
-	// ÀÌ·± ÄÚµå´Â ¾ø´Ù.
+	// ì´ëŸ° ì½”ë“œëŠ” ì—†ë‹¤.
 	public static void main(String[] args) {
 		try {
 			first();		
