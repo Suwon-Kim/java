@@ -187,8 +187,3 @@ class JFrameEx4 {
 }
 ```
 
-echo %JAVA_HOME%
-
-echo %CLASSPATH%
-
-javac ----> PATH
