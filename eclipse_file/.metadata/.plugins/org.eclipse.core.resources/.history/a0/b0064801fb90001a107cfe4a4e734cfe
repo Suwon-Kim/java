@@ -1,0 +1,13 @@
+package kr.ac.green;
+import javax.swing.*;
+import java.awt.*;
+
+public class MyFrame {
+	
+	public MyFrame() {
+		
+	}
+	public static void main(String[] args) {
+		
+	}
+}

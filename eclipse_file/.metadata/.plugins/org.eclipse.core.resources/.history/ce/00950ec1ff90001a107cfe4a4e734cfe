@@ -1,0 +1,63 @@
+package kr.ac.green;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class MyFrame2 extends JFrame {
+	
+	private JLabel lblInfo;
+	private JTextField tfInput;
+	private JButton btnCalc;
+	private JTextField tfOutput;
+	
+	public MyFrame2() {
+		init();
+		setDisplay();
+		showFrame();
+	}
+	
+	private void init() {
+		lblInfo = new JLabel("거리를 마일단위로 입력하시오");
+		tfInput = new JTextField(10);
+		
+		btnCalc = new JButton("변환");
+		
+		tfOutput = new JTextField(25);
+		tfOutput.setEditable(false);
+		tfOutput.setBackground(Color.WHITE);
+	}
+	
+	private void setDisplay() {
+		JPanel pnlNorth = new JPanel();
+		pnlNorth.add(lblInfo);
+		pnlNorth.add(tfInput);		
+		
+		JPanel pnlCenter = new JPanel();
+		pnlCenter.add(btnCalc);
+		
+		JPanel pnlSouth = new JPanel();
+		pnlSouth.add(tfOutput);
+		
+		add(pnlNorth, BorderLayout.NORTH);
+		add(pnlCenter, BorderLayout.CENTER);
+		add(pnlSouth, BorderLayout.SOUTH);
+	}
+	
+	private void showFrame() {
+		setTitle("마일을 킬로미터로 변환");
+		pack();
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		new Answer2();
+	}
+}

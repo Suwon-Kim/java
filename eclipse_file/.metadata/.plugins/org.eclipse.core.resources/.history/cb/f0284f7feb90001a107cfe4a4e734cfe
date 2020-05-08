@@ -1,0 +1,32 @@
+package kr.ac.green;
+
+import java.awt.*;
+import javax.swing.*;
+
+public class ComponentEx2 extends JFrame {
+	public ComponentEx2() {
+		
+		JTextField tFName = new JTextField(20);
+		tFName.setText("HI ~");
+		
+		JLabel lblName = new JLabel("¿Ã∏ß");
+		
+		JPanel pnlName = new JPanel();
+		pnlName.add(lblName);
+		pnlName.add(tFName);
+		
+		JTextArea taInput = new JTextArea(6,30);
+		
+		add(pnlName, BorderLayout.NORTH);
+		add(taInput, BorderLayout.CENTER);
+		setTitle("ComponentEx2");
+		pack();
+		setLocation(100, 0);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+		
+	}
+	public static void main(String[] args) {
+		new ComponentEx2();
+	}
+}

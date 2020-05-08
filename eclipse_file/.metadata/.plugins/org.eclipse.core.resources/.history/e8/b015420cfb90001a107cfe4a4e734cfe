@@ -1,0 +1,32 @@
+package kr.ac.green;
+import java.awt.BorderLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class MyFrame extends JFrame {
+	private JLabel label;
+	
+	public MyFrame() {
+		JLabel label = new JLabel("자바 피자에 오신것을 환영합니다. 피자를 고르세요");
+		JButton btn1 = new JButton("콤보피자");
+		JButton btn2 = new JButton("포테이토 피자");
+		JButton btn3 = new JButton("불고기 피자");
+		
+		label.setHorizontalTextPosition(JLabel.CENTER);
+		label.setVerticalTextPosition(JLabel.TOP);
+		
+		add(label, BorderLayout.CENTER);
+		
+		setTitle("MyFrame");
+		pack();
+		setLocation(100,0);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		
+	}
+}
