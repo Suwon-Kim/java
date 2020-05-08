@@ -3,13 +3,13 @@ package kr.ac.green;
  * ctrl + s : save + compile
  * ctrl + f11 : run
  * alt + shift + x -> j : run
- * ctrl + m : Ã¢ ÃÖ´ëÈ­, º¹¿ø
- * ctrl + / : ÁÖ¼®Ã³¸®, ÇØÁ¦
+ * ctrl + m : ì°½ ìµœëŒ€í™”, ë³µì›
+ * ctrl + / : ì£¼ì„ì²˜ë¦¬, í•´ì œ
  */
 public class HelloJava {
 	public static void main(String[] args) {
 		System.out.println("Hello Java");
-		System.out.println("‰Î?");
+		System.out.println("ëŒ?");
 		
 	}
 }

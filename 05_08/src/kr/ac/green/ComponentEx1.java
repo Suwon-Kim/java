@@ -15,12 +15,12 @@ public class ComponentEx1 extends JFrame {
 	public ComponentEx1() {
 		
 		lbl = new JLabel(new ImageIcon("iu.jpg"));
-		lbl.setText("¾ÆÀÌÀ¯Â¯!");
+		lbl.setText("ì•„ì´ìœ ì§±!");
 		
 		lbl.setHorizontalTextPosition(JLabel.CENTER);
 		lbl.setVerticalTextPosition(JLabel.TOP);
 		
-		lbl.setToolTipText("ÀÌ°Å½¼ ¾ÆÀÌÀ¯´Ô ÀÔ´Ï´Ù.");
+		lbl.setToolTipText("ì´ê±°ìŠ¨ ì•„ì´ìœ ë‹˜ ì…ë‹ˆë‹¤.");
 		
 		JPanel pnlSouth = new JPanel();
 		pnlSouth.setBackground(Color.WHITE);
@@ -30,7 +30,7 @@ public class ComponentEx1 extends JFrame {
 		
 		btnGood.setPressedIcon(new ImageIcon("icon3.png"));
 		
-		btnGood.setText("ÁÁ¾Æ¿ä");
+		btnGood.setText("ì¢‹ì•„ìš”");
 		btnGood.setHorizontalTextPosition(JButton.CENTER);
 		btnGood.setVerticalTextPosition(JButton.BOTTOM);
 		pnlSouth.add(btnGood);

@@ -3,15 +3,15 @@ package kr.ac.green;
 import java.util.Scanner;
 
 /*
- * ctrl + d : ÁÙ»èÁ¦
- * ctrl + shift + o : ÀÚµ¿ÀÓÆ÷Æ®
- * alt + shift + s -> c : ±âº»»ý¼ºÀÚ
- * alt + shift + s -> o : ÆÄ¶ó¹ÌÅÍ Ã³¸® »ý¼ºÀÚ
- * alt + shift + s -> r : getter / setter »ý¼º
- * alt + shift + s -> s : toString »ý¼º
- * ctrl + shift + f : ÀÚµ¿ÁÙ¸ÂÃã
+ * ctrl + d : ï¿½Ù»ï¿½ï¿½ï¿½
+ * ctrl + shift + o : ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+ * alt + shift + s -> c : ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * alt + shift + s -> o : ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * alt + shift + s -> r : getter / setter ï¿½ï¿½ï¿½ï¿½
+ * alt + shift + s -> s : toString ï¿½ï¿½ï¿½ï¿½
+ * ctrl + shift + f : ï¿½Úµï¿½ï¿½Ù¸ï¿½ï¿½ï¿½
  * alt + shift + t -> n : rename
- * ctrl + f6 : ¿¡µðÆ®Ã¢ ¼±ÅÃ
+ * ctrl + f6 : ï¿½ï¿½ï¿½ï¿½Æ®Ã¢ ï¿½ï¿½ï¿½ï¿½
  */
 public class Some {
 	public String str2 = "zzz";
