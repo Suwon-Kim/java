@@ -1,0 +1,13 @@
+package kr.ac.green;
+/*
+ 	ctrl + s : save + compile
+ 	ctrl + f11 : run
+ 	ctrl + m : 창을 키울때 사용
+ 	menu - window - perspective - reset 다시 복구
+ */
+public class HelloJava {
+	public static void main(String[] args) {
+		System.out.println("Hello Java");
+		System.out.println("됌 ? ");
+	}
+}
