@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Insets;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -26,9 +25,7 @@ public class BorderTest extends JFrame {
 		JPanel pnlMain = new JPanel(new GridLayout(0, 1, 10, 10));
 		JScrollPane scroll = new JScrollPane(pnlMain);
 		
-		// insets : 위, 왼, 아래, 오
-		Insets insets = new Insets(20, 20, 20, 20);
-		pnlMain.setBorder(new EmptyBorder(insets));
+		pnlMain.setBorder(new EmptyBorder(20, 20, 20, 20));
 		
 		AbstractBorder border = new LineBorder(Color.BLACK, 2);
 		pnlMain.add(getLabel("LineBorder", border));
@@ -70,26 +67,9 @@ public class BorderTest extends JFrame {
 		pnlMain.add(getLabel("TitledBorder", tBorder));
 		
 		tBorder = new TitledBorder("TEXT");
-		
-		//타이블 폰트설정
 		tBorder.setTitleFont(new Font(Font.DIALOG, Font.BOLD | Font.ITALIC, 15));
 		pnlMain.add(getLabel("TitledBorder", tBorder));
 		
-		tBorder.setTitleColor(Color.RED);
-		pnlMain.add(getLabel("TitledBorder", tBorder));
-		
-		TitledBorder innerBorder = new TitledBorder(
-			new LineBorder(Color.BLUE, 1),
-			"inner-border"
-			
-		);
-		innerBorder.setTitlePosition(TitledBorder.BOTTOM);
-		
-		tBorder = new TitledBorder (
-			innerBorder,
-			"TOP"
-		);
-		pnlMain.add(getLabel("TitledBorder", tBorder));
 		
 		//테두리가 솟아오른 것
 		border = new EtchedBorder(EtchedBorder.RAISED);
