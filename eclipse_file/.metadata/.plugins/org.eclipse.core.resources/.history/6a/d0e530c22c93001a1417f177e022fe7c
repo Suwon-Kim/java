@@ -1,0 +1,34 @@
+package kr.ac.green;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+public class BorderTest extends JFrame {
+	
+	public BorderTest() {
+		JPanel pnlMain = new JPanel(new GridLayout(0, 1));
+		JScrollPane scroll = new JScrollPane(pnlMain);
+		
+		for(int i = 0; i < 30; i++) {
+			pnlMain.add(new JButton(String.valueOf(i + 1)));
+			
+		}
+		
+		add(scroll, BorderLayout.CENTER);
+		
+		setTitle("Border Test");
+		setSize(400, 300);
+		setLocation(100, 0);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+		
+	}
+	public static void main(String[] args) {
+		new BorderTest();
+	}
+}
