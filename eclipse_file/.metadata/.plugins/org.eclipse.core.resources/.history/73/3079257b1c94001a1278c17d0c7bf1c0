@@ -1,0 +1,11 @@
+package kr.ac.green.other.second;
+
+public class CalcActionListener implements ActionListener {
+	private Answer2 ui;
+	
+	public CalcActionListener(Answer2 ui) {
+		this.ui = ui;
+	}
+	@Override
+	public void action
+}
