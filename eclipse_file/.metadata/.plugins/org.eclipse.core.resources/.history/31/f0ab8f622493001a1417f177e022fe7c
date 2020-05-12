@@ -1,0 +1,29 @@
+package kr.ac.green;
+
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class SizeControl extends JFrame {
+	public SizeControl() {
+		JButton btnA = new JButton("this is a A-Button");
+		JButton btnB = new JButton("I'm B");
+		
+		setLayout(new FlowLayout());
+		
+		add(btnA);
+		add(btnB);
+		
+		setTitle("Size Control");
+		setSize(400, 150);
+		setLocation(100, 0);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+		
+		System.out.println(btnA.getSize());
+	}
+	public static void main(String[] args) {
+		new SizeControl();
+	}
+}
