@@ -1,4 +1,39 @@
 ```java
+멤버변수 -- > 객체가 가져야하는 정보, 상태 
+초기값이 있느냐 없느냐, scope,  
+지역변수 -- >
+
+마크인터페이스는 언제 쓰는지? 
+
+-- > 구분할려고 
+
+Event -- > 사용자가 우리가 만든 UI 상에서 행하는 모든 행위 
+이벤트에 대한 처리를 안해줘서 동작안함 (지금까지)
+EventSource -- > 이벤트가 발생한 컴포넌트 (예 : 버튼)
+EventListener (INTERFACE로 구성됨) -- > 이벤트 핸들러라고도 한다. 이벤트가 발생할 때 할 일을 정리
+마우스 이벤트가 발생하면 마우스 리스너, 윈도우 이벤트가 발생하면 윈도우 리스너 (99%)
+EventDriven -- > 사용자가 요청하면 작동
+interface로 구성됨
+
+=======================================================================================
+
+프로그래밍 하는 순서
+
+1. UI 구현 (기능정의가 끝남) ( 처리해야할 이벤트가 결정남 ) 
+
+2. 리스너 구현 (실제 기능구현) 
+
+3. 이벤트 소스, 이벤트 리스너를 연결 
+
+Listener(a) --- > source(a) b와 소스가 다름
+Listener(b) --- > source(b) a와 소스가 다름   
+
+(이벤트 소스).addXXXListener(이벤트 리스너) <<-- 이벤트 소스와 이벤트 리스너를 연결하는 메소드 
+
+이벤트 소스가 들어오면 addXXXListener가 이벤트 리스너를 처리한다.
+
+
+
 package kr.ac.green.first;
 
 import java.awt.BorderLayout;
@@ -71,15 +106,6 @@ public class Counter extends JFrame implements ActionListener {
 		new Counter();
 	}
 }
-
-
-
-
-
-
-
-
-
 ```
 
 ```java
@@ -138,15 +164,6 @@ public class Counter extends JFrame {
 		new Counter();
 	}
 }
-
-
-
-
-
-
-
-
-
 ```
 
 ```java
@@ -175,14 +192,6 @@ public class MyActionListener implements ActionListener {
 		lblNum.setText(strNum);
 	}
 }
-
-
-
-
-
-
-
-
 ```
 
 ```java
@@ -243,15 +252,6 @@ public class Counter extends JFrame {
 		new Counter();
 	}
 }
-
-
-
-
-
-
-
-
-
 ```
 
 ```java
@@ -269,9 +269,8 @@ public class MyActionListener2 implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		ui.plusNum();
-	}
+	}      
 }
-
 ```
 
 ```java
@@ -334,14 +333,6 @@ public class Counter extends JFrame implements IPressable {
 	}
 }
 
-
-
-
-
-
-
-
-
 ```
 
 ```java
@@ -350,7 +341,6 @@ package kr.ac.green.fourth;
 public interface IPressable {
 	void buttonPressed();
 }
-
 ```
 
 ```java
@@ -488,7 +478,6 @@ public class Answer2 extends JFrame implements ActionListener {
 		new Answer2();
 	}
 }
-
 
 ```
 
