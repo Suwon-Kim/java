@@ -1,0 +1,12 @@
+package ex;
+
+import java.awt.event.WindowAdapter;
+
+public class Ex1Listener extends WindowAdapter{
+	
+	private Ex1 ex1;
+	
+	public Ex1(Ex1 ex1){
+		this.ex1 = ex1;
+	}
+}

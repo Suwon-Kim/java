@@ -1,0 +1,48 @@
+package ex;
+
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class Ex1 extends JFrame implements ActionListener{
+	
+	private JButton btnPlus;
+	private JButton btnMinus;
+	private JButton btnDefault;
+	
+	private JLabel lblNum;
+	
+	public Ex1() {
+		init();
+		setDisplay();
+		addListener();
+		showFrame();
+	}
+	
+	private void init(){
+		
+	}
+	
+	private void setDisplay(){
+		
+	}
+	
+	private void addListener(){
+		
+	}
+	
+	private void showFrame(){
+		setTitle("ex1");
+		setSize(300, 400);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		new Ex1();
+	}
+	
+}

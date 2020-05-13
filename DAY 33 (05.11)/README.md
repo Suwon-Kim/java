@@ -86,6 +86,7 @@ public class Counter extends JFrame implements ActionListener {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
+
 	
 	@Override
 	public void actionPerformed(ActionEvent ae) {

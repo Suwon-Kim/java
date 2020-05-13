@@ -1,0 +1,10 @@
+package ex;
+
+public class HumanEx {
+
+	private ISpeakable sp;
+	
+	public HumanEx(I) {
+		this.sp = sp;
+	}
+}

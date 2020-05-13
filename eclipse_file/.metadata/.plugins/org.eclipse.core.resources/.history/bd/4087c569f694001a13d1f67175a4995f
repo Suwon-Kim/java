@@ -1,0 +1,18 @@
+package ex;
+
+public class HumanEx {
+
+	private ISpeakableEx sp;
+	
+	public HumanEx(ISpeakableEx sp) {
+		this.sp = sp;
+	}
+	
+	public void performSpeak(){
+		sp.speak();
+	}
+	
+	public static void main(String[] args) {
+		
+	}
+}

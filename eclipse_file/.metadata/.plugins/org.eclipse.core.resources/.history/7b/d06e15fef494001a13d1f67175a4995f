@@ -1,0 +1,8 @@
+package ex;
+
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+
+public class Ex1Listener extends WindowAdapter{
+	
+}
