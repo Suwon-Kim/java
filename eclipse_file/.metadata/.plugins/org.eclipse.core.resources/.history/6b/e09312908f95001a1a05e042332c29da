@@ -1,0 +1,76 @@
+package kr.ac.green;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
+public class ItemEventEx1 extends JFrame {
+	private JRadioButton rbtnMook;
+	private JRadioButton rbtnZzi;
+	private JRadioButton rbtnFa;
+	
+	private JButton btnStart;
+	
+	private JTextField tfResult;
+	
+	public ItemEventEx1() {
+		init();
+		setDisplay();
+		showFrame();
+		addListener();
+	}
+	public void init() {
+		rbtnMook = new JRadioButton("¹¬");
+		rbtnZzi = new JRadioButton("Âî");
+		rbtnFa = new JRadioButton("ºü");
+		
+		ButtonGroup group = new ButtonGroup();
+		group.add(rbtnMook);
+		group.add(rbtnZzi);
+		group.add(rbtnFa);
+		
+		btnStart = new JButton("½ÃÀÛ");
+		
+		tfResult = new JTextField(30);
+	}
+	public void setDisplay() {
+		JPanel pnlSum = new JPanel(new GridLayout(1,2));
+		
+		JPanel pnlNorth = new JPanel();
+		pnlNorth.add(rbtnMook);
+		pnlNorth.add(rbtnZzi);
+		pnlNorth.add(rbtnFa);
+		
+		JPanel pnlCenter = new JPanel();
+		pnlCenter.add(btnStart);
+		add(pnlCenter, BorderLayout.CENTER);
+		
+		pnlSum.add(pnlNorth);
+		pnlSum.add(pnlCenter);
+		
+		JPanel pnlSouth = new JPanel();
+		pnlSouth.add(tfResult);
+		pnlSum.add(pnlSouth);
+			
+	}
+	public void addListener() {
+		
+	}
+	public void showFrame() {
+		setTitle("MJBGame");
+		setSize(300,200);
+		setLocation(500,500);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		new ItemEventEx1();
+	}
+}
