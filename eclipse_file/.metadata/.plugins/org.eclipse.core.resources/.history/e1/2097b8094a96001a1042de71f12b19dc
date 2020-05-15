@@ -1,0 +1,125 @@
+package kr.ac.green;
+
+import java.awt.BorderLayout;
+import java.awt.Font;
+
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.UIManager;
+
+/*
+ *  메뉴는 배치의 대상이 아님. 기본 위치가 약속되어 있음.
+ *  
+ *  - 메뉴의 구성요소
+ *  1. JMenuBar : JMenu를 포함할 수 있는 Component
+ *  2 .JMenu : 기능 (자식을 보여준다)
+ *  3. JMenuItem (JRadioButtonMenuItem, JCheckBoxMenuItem) : 기능이 존재
+ * 
+ */
+public class MenuEx extends JFrame {
+	
+	private JMenuBar mBar;
+	private JMenu mFile;
+	private JMenuItem miOpen;
+	private JMenuItem miSave;
+	private JMenuItem miExit;
+	
+	private JMenu mOption;
+	private JRadioButtonMenuItem rbmiOptionA;
+	private JRadioButtonMenuItem rbmiOptionB;
+	
+	
+	
+	private JLabel lblMain;
+	private JButton btnExit;
+	
+	public MenuEx() {
+		init();
+		setDisplay();
+		addListeners();
+		showFrame();
+	}
+	
+	private void init() {
+		try {
+			String lookNFeelName = UIManager.getSystemLookAndFeelClassName();
+			UIManager.setLookAndFeel(lookNFeelName);
+		} catch (Exception e) { }
+		
+		//항상 맨앞에 넣어줘야한다. 메뉴바에 대한 모양(? window환경과 같은 ) 변경
+		
+		lblMain = new JLabel("Start", JLabel.CENTER);
+		lblMain.setFont(new Font(Font.DIALOG, Font.BOLD,40));
+		
+		btnExit = new JButton("Exit");
+		
+		mBar = new JMenuBar();
+		mFile = new JMenu("File");
+		miOpen = new JMenuItem("Open");
+		miOpen.setIcon(new ImageIcon("open.png"));
+		miSave = new JMenuItem("Save");
+		miSave.setIcon(new ImageIcon("save.png"));
+		miExit = new JMenuItem("Exit");
+		miExit.setIcon(new ImageIcon("exit.png"));
+		
+		mOption = new JMenu("Option");
+		rbmiOptionA = new JRadioButtonMenuItem("Option A", true);
+		rbmiOptionB = new JRadioButtonMenuItem("Option B");
+		
+		ButtonGroup group = new ButtonGroup();
+		group.add(rbmiOptionA);
+		group.add(rbmiOptionB);
+	}
+	
+
+	private void setDisplay() {
+		JPanel pnlSouth = new JPanel();
+		pnlSouth.add(btnExit);
+		
+		add(lblMain, BorderLayout.CENTER);
+		add(pnlSouth, BorderLayout.SOUTH);
+		
+		//메뉴 조립
+		mOption.add(rbmiOptionA);
+		mOption.add(rbmiOptionB);
+		
+		mFile.add(miOpen);
+		mFile.add(miSave);
+		mFile.addSeparator();
+		mFile.add(miOpen);
+		mFile.addSeparator();
+		mFile.add(miExit);
+		
+		mBar.add(mFile);
+		
+		// 배치 대상이 아님...
+		setJMenuBar(mBar);
+		
+	}
+
+	private void addListeners() {
+		
+		
+	}
+
+	private void showFrame() {
+		setTitle("Menu Ex");
+		setSize(400, 300);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+		
+	}
+
+	public static void main(String[] args) {
+		new MenuEx();
+	}
+}

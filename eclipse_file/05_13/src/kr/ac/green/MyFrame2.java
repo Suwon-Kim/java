@@ -18,8 +18,8 @@ public class MyFrame2 extends JFrame {
 		setVisible(true);
 	}
 	
-	private class MyWindowListener2 exte
-	nds WindowAdapter {
+	private class MyWindowListener2 extends WindowAdapter {
+	
 		@Override
 		public void windowClosing(WindowEvent we) {
 			System.exit(0);

@@ -2,6 +2,8 @@ package kr.ac.green;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -19,7 +21,7 @@ public class MJBGame extends JFrame {
 	private JRadioButton[] rbtns = {
 			new JRadioButton("묵"),
 			new JRadioButton("찌"),
-			new JRadioButton("빠")
+			new JRadioButton("빠") 
 	};
 	
 	//JRadioButton rbtn = new JRadioButton();
@@ -59,7 +61,27 @@ public class MJBGame extends JFrame {
 	}
 	
 	private void addListeners() {
-		
+		btnStart.addActionListener(
+				new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent ae) {
+						int userSelect = 0;
+						for(int idx = 0; idx < rbtns.length; idx++) {
+							if(rbtns[idx].isSelected()) {
+								userSelect = idx;
+								//rbtns[0]--> 라디오 묵 버튼 true면 
+								//userSelect에 0을 대입
+								//rbtns[1] -- > 라디오 찌 버튼이 true면 
+								//userSelect에 1을 대입
+								
+							}
+						}
+						
+						int computer = (int) (Math.random() * 3);
+						
+					}
+				}
+		);
 	}
 	
 	private void showFrame() {
