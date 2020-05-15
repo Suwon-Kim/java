@@ -63,11 +63,6 @@ public class PopupEx extends JFrame {
 	}
 	
 	private void showPopup(MouseEvent me) {
-		/*
-		 * 팝업메뉴
-		 * 1. 우클릭
-		 * 2. OS가 누를때 반응? 뗄때 반응?
-		 */
 		// 버튼 + 시점 
 		//팝업 신호가 맞는지
 		if(me.isPopupTrigger()) {
