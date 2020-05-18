@@ -1,0 +1,69 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
+
+public class Test5 extends JFrame {
+	private JRadioButton rbtnRed;
+	private JRadioButton rbtnGreen;
+	private JRadioButton rbtnBlue;
+	
+	private JLabel lblColor;
+	
+	private String name;
+	
+	public Test5() {
+		init();
+		setDisplay();
+		addListeners();
+		showFrame();
+	}
+	
+	private void init() {
+		rbtnRed = new JRadioButton("Red",true);
+		rbtnGreen = new JRadioButton("Green");
+		rbtnBlue = new JRadioButton("Blue");
+		
+		ButtonGroup group = new ButtonGroup();
+		group.add(rbtnBlue);
+		group.add(rbtnGreen);
+		group.add(rbtnRed);
+		
+		lblColor = new JLabel();
+		lblColor.setOpaque(true);
+		lblColor.setBackground(Color.YELLOW);
+		lblColor.setBorder(new TitledBorder(new LineBorder(Color.red, 1),"Color Display"));
+				
+
+		
+	}
+	private void setDisplay() {
+		JPanel pnlSouth = new JPanel();
+		pnlSouth.add(rbtnBlue);
+		pnlSouth.add(rbtnGreen);
+		pnlSouth.add(rbtnRed);
+		
+		add(lblColor, BorderLayout.CENTER);
+		add(pnlSouth, BorderLayout.SOUTH);
+	}
+	private void addListeners() {
+		
+	}
+	private void showFrame() {
+		setTitle("â");
+		setSize(400,300);
+		setLocation(100,0);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		new Test5();
+	}
+}

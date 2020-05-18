@@ -1,0 +1,48 @@
+package kr.ac.green;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+/*
+ * JDialog
+ * 1. 메뉴를 가질 수 없다.
+ * 2. base container
+ * 3. 기본레이아웃 : BorderLayout
+ * 4. modal 설정 가능 : 부모창의 기능동작 정지
+ */
+public class MyDialog extends JDialog{
+	private JButton btnClose;
+	
+	public MyDialog(MyFrame owner) {
+		// 1. 부모창, 2. 타이틀, 3. modal여부
+		super(owner, "MyDialog", false);
+		
+		btnClose = new JButton("Close");
+		
+		JPanel pnl = new JPanel();
+		pnl.add(btnClose);
+		
+		add(pnl, BorderLayout.SOUTH);
+		
+		btnClose.addActionListener((e)-> dispose());
+		
+		
+		setSize(300, 200);
+		setLocation(100, 0);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setVisible(true);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+

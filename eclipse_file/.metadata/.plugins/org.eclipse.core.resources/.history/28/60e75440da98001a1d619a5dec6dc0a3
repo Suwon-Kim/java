@@ -1,0 +1,8 @@
+import javax.swing.JFrame;
+
+public class Test6 extends JFrame {
+	
+	public static void main(String[] args) {
+		new Test6();
+	}
+}

@@ -1,0 +1,16 @@
+import javax.swing.JButton;
+
+public class Fruit {
+	
+	
+	private JButton btn1;
+	private JButton btn2;
+	private JButton btn3;
+	
+	btn1 = new JButton("1");
+	
+	
+	public static void main(String[] args) {
+		new Fruit();
+	}
+}

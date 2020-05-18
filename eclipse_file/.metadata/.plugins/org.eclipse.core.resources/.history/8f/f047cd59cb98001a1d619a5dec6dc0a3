@@ -1,0 +1,25 @@
+import java.awt.BorderLayout;
+import java.awt.Font;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPopupMenu;
+
+public class Test4 extends JFrame {
+	private JPopupMenu pMenu;
+	private JLabel lblMain;
+	
+	public Test4() {
+		lblMain = new JLabel("Start", JLabel.CENTER);
+		lblMain.setFont(new Font(Font.SERIF, Font.BOLD, 40));
+		
+		pMenu = new JPopupMenu();
+		
+		
+		
+		add(lblMain, BorderLayout.CENTER);
+	}
+	public static void main(String[] args) {
+		new Test4();
+	}
+}

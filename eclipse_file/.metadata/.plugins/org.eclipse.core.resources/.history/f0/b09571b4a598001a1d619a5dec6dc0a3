@@ -1,0 +1,69 @@
+package kr.ac.green;
+
+import java.awt.BorderLayout;
+import java.util.Vector;
+
+import javax.swing.Box;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JToolBar;
+
+/*
+ * 새창 띄우기 - JDialog, JFrame
+ */
+public class MyFrame extends JFrame {
+	
+	private Vector<String> wordsList;
+	
+	public MyFrame() {
+		wordsList = new Vector<String>();
+
+		/*
+		 * BorderLayout에만 사용가능
+		 * North, East, West, South 영역이 비어 있어야함.
+		 */
+		JToolBar tBar = new JToolBar();
+		tBar.setFloatable(false);
+		
+		JLabel lblInput = new JLabel("입력");
+		JTextField tfInput = new JTextField(20);
+		tfInput.setEditable(false);
+		JButton btnInput = new JButton("입력");
+		
+		JPanel pnlInput = new JPanel();
+		pnlInput.add(lblInput);
+		pnlInput.add(tfInput);
+		pnlInput.add(btnInput);
+		
+		tBar.add(new JButton("Open"));
+		tBar.add(new JButton("Save"));
+		tBar.addSeparator();
+		tBar.add(new JButton("Exit"));
+		tBar.add(Box.createHorizontalGlue());
+		tBar.add(new JButton("Help"));
+		
+		JPanel pnlCenter = new JPanel(new BorderLayout());
+		JPanel pnl = new JPanel();
+		
+		pnlCenter.add(pnl, BorderLayout.SOUTH);
+		pnlCenter.add(pnlInput, BorderLayout.CENTER);
+		
+		add(tBar, BorderLayout.NORTH);
+		add(pnlCenter, BorderLayout.CENTER);
+		
+		btnInput.addActionListener((e) -> new MyDialog(MyFrame.this));
+		
+		setTitle("새창열기");
+		setSize(400, 300);
+		setLocation(100, 0);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		new MyFrame();
+	}
+}

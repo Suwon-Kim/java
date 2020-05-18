@@ -1,0 +1,70 @@
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+
+public class Test6 extends JFrame {
+	private JRadioButton rbtnMook;
+	private JRadioButton rbtnZzi;
+	private JRadioButton rbtnFa;
+	
+	private int randomNum;
+	
+	private JButton btnStart;
+	
+	private JTextArea tfResult;
+	
+	public final static int MOOK = 0;
+	public final static int ZZI = 1;
+	public final static int FA = 2;
+	
+	private Test6() {
+		init();
+		setDisplay();
+		addListeners();
+		showFrame();
+	}
+	private void init() {
+		
+		rbtnMook = new JRadioButton("¹¬");
+		rbtnZzi = new JRadioButton("Âî");
+		rbtnFa = new JRadioButton("ºü");
+		
+		ButtonGroup group = new ButtonGroup();
+		group.add(rbtnMook);
+		group.add(rbtnZzi);
+		group.add(rbtnFa);
+		
+		btnStart = new JButton("½ÃÀÛ");
+		tfResult = new JTextArea(4,4);
+		
+	}
+	private void setDisplay() {
+		JPanel pnlMJB = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		
+		pnlMJB.add(rbtnMook);
+		pnlMJB.add(rbtnZzi);
+		pnlMJB.add(rbtnFa);
+		
+		add(pnlMJB, BorderLayout.NORTH);
+	}
+	private void addListeners() {
+		
+	}
+	private void showFrame() {
+		setTitle("MJBGame");
+		setSize(300,200);
+		setLocation(500,500);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		new Test6();
+	}
+}
