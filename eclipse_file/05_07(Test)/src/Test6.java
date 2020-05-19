@@ -68,14 +68,21 @@ public class Test6 extends JFrame {
 			@Override
 			public void itemStateChanged(ItemEvent ie) {
 				Object src = ie.getSource();
-				String ment = "당신 : 빠";
+				String ment = "당신 : 빠\n";
 				if(src == rbtnMook) {
-					ment = "당신 : 묵";
+					ment = "당신 : 묵\n";
+					if(randomNum == 1) {
+						tfResult.append("당신이 졌습니다.");
+					} else if(randomNum == 2) {
+						tfResult.append("비겼습니다.");
+					} else {
+						tfResult.append("당신이 이겼습니다.");
+					}
+					
 				} else if(src == rbtnZzi) {
-					ment = "당신 : 찌";
+					ment = "당신 : 찌\n";
 				}
 				tfResult.setText(ment);
-				System.out.println("");
 			}
 		};
 		
@@ -84,16 +91,16 @@ public class Test6 extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				randomNum = (int) (Math.random() * 3) + 1;
 				if(randomNum == 1) {
-					tfResult.setText("컴퓨터 : 빠");
+					tfResult.append("컴퓨터 : 빠\n");
 				} else if (randomNum == 2) {
-					tfResult.setText("컴퓨터 : 묵");
+					tfResult.append("컴퓨터 : 묵\n");
 				} else {
-					tfResult.setText("컴퓨터 : 찌");
+					tfResult.append("컴퓨터 : 찌\n");
 				}
 			}
-			
 		};
-
+		
+		btnStart.addActionListener(aListener);
 		rbtnMook.addItemListener(IListener);
 		rbtnZzi.addItemListener(IListener);
 		rbtnFa.addItemListener(IListener);
