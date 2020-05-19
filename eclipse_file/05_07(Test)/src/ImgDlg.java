@@ -18,7 +18,7 @@ class ImgDlg extends JDialog implements ActionListener {
 	public static final int PREV = 1;
 	public final static Dimension PIC_SIZE = new Dimension(500, 500);
 	private Viewer owner;
-	private JLabel order;
+	private JLabel lbl;
 	private int order;
 	private JLabel lblStatus;
 	private JPopupMenu pMenu;
@@ -65,7 +65,7 @@ class ImgDlg extends JDialog implements ActionListener {
 		});
 	}
 	public void showPopup(MouseEvent me) {
-		pMenu.show(me.getComponent(), me.getX(), em.getY());
+		pMenu.show(me.getComponent(), me.getX(), me.getY());
 	}
 	private void showDlg() {
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);

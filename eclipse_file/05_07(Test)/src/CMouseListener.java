@@ -8,11 +8,13 @@ import java.awt.event.MouseEvent;
 import javax.swing.JComponent;
 import javax.swing.border.LineBorder;
 
+//컨테이너로 상속받은놈만 w에 가능하다
 class CMouseListener<W extends Container> extends MouseAdapter {
 	private W owner;
 	public CMouseListener(W owner) {
 		this.owner = owner;
 	}
+	// true false
 	@Override
 	public void mouseEntered(MouseEvent me) {
 		setBorder(me, true);
