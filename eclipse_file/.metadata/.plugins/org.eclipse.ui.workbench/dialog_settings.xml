@@ -26,6 +26,7 @@
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID"/>
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="C:\Users\user\Desktop\Lotto"/>
 			<item value="C:\Users\user\Desktop\05_13"/>
 			<item value="D:\java\Eclipse_File\05_11"/>
 			<item value="C:\Users\user\Desktop\05_08"/>

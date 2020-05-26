@@ -1,0 +1,77 @@
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+public class LottoStart extends JFrame{
+	private JButton btnBuy;
+	private JButton btnCancel;
+
+	private JLabel lblInfo1;
+	private JLabel lblInfo2;
+	
+	private JComboBox cbCount;
+	
+	public LottoStart() {
+		init();
+		setDisplay();
+		addListeners();
+		showFrame();
+	}
+	
+	private void init() {
+		btnBuy = new JButton("구매");
+		btnCancel = new JButton("취소");
+		
+		lblInfo1 = new JLabel("몇 개를 구매하시겠습니까?", JLabel.CENTER);
+		lblInfo1.setFont(new Font(Font.SERIF, Font.BOLD, 20));
+		
+		lblInfo2 = new JLabel("(최대 5장 구매가능)", JLabel.CENTER);
+		lblInfo2.setFont(new Font(Font.SERIF, Font.BOLD, 20));
+		
+		
+		String[] count = { "1장", "2장", "3장", "4장", "5장" };
+		cbCount = new JComboBox(count);
+
+	}
+	private void setDisplay() {
+		JPanel pnlCenter = new JPanel(new BorderLayout());
+		pnlCenter.setBorder(new EmptyBorder(100, 100, 100, 100));
+		
+		JPanel pnlCombo = new JPanel();
+		pnlCombo.add(cbCount);
+		pnlCombo.setBorder(new EmptyBorder(20, 0, 0, 0));
+		
+		pnlCenter.add(lblInfo1, BorderLayout.NORTH);
+		pnlCenter.add(lblInfo2, BorderLayout.CENTER);
+		pnlCenter.add(pnlCombo, BorderLayout.SOUTH);
+		
+		JPanel pnlSouth = new JPanel();
+		pnlSouth.add(btnBuy);
+		pnlSouth.add(btnCancel);
+		
+		add(pnlCenter, BorderLayout.CENTER);
+		add(pnlSouth, BorderLayout.SOUTH);
+	}
+	private void addListeners() {
+		
+	}
+	private void showFrame() {
+		setTitle("로또 구매 창");
+		//setSize(500, 500);
+		pack();
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+	public static void main(String[] args) {
+		new LottoStart();
+	}
+}

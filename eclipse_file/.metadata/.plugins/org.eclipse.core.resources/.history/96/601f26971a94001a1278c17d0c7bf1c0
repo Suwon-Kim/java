@@ -1,5 +1,0 @@
-package kr.ac.green.other;
-
-public interface Pressable {
-
-}

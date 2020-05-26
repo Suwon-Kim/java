@@ -1,0 +1,21 @@
+package kr.ac.green;
+
+import java.io.File;
+import java.io.IOException;
+
+public class FileEx5 {
+	public static void main(String[] args) {
+		
+		File f = new File("c:\\study\\a.txt");
+		
+		try {
+			f.createNewFile();
+			
+			System.out.println(f.getParent()); 	// 경로를 얘기하는거 
+			System.out.println(f.getName());	// 실제로 파일의 이름
+			System.out.println(f.getPath());	// 경로 + 파일 합친거
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

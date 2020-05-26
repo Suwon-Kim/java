@@ -1,0 +1,197 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.TreeSet;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
+class LottoPaper extends JPanel {
+	public static final Dimension LBLNUM_SIZE = new Dimension(20, 20);
+	public static final Dimension PNLROUND_SIZE = new Dimension(200, 400);
+
+	private int[] LottoResult;
+	private TreeSet<Integer> autoBall;
+
+	private int round; // 회차 정보
+	private JLabel[] lblNums; // 45개의 숫자 레이블
+	private JPanel[] pnlLine; // 7개의 패널(1줄 당 7개의 번호를 담는다)
+
+	private JPanel pnlRound; // pnlNorth + pnlCenter + pnlSouth 패널
+	private JPanel pnlNorth; // 회차정보 담는 패널
+	private JPanel pnlCenter; // pnlLine들을 담을 패널
+	private JPanel pnlSouth; // 자동+수동버튼 담는 패널
+
+	private JRadioButton rbtnAuto; // 자동버튼
+	private JRadioButton rbtnHand; // 수동버튼
+
+	public JPanel getPnlRound() {
+		return pnlRound;
+	}
+
+	public LottoPaper() {
+		init();
+		setDisplay();
+		addListeners();
+	}
+
+	private void init() {
+		autoBall = new TreeSet<Integer>();
+		LottoResult = new int[6];
+
+		round = 1;
+
+		lblNums = new JLabel[45];
+		pnlLine = new JPanel[7];
+		for (int idx = 0; idx < pnlLine.length; idx++) {
+			pnlLine[idx] = new JPanel();
+		}
+
+		pnlRound = new JPanel(new BorderLayout());
+		pnlRound.setPreferredSize(PNLROUND_SIZE);
+		pnlNorth = new JPanel();
+		pnlCenter = new JPanel();
+		pnlSouth = new JPanel();
+
+		rbtnAuto = new JRadioButton("자동");
+		rbtnHand = new JRadioButton("수동", true);
+
+		ButtonGroup group = new ButtonGroup();
+		group.add(rbtnAuto);
+		group.add(rbtnHand);
+
+		int line = 0;
+		for (int idx = 0; idx < lblNums.length; idx++) {
+			lblNums[idx] = new JLabel(String.valueOf(idx + 1), JLabel.CENTER);
+			lblNums[idx].setBorder(new LineBorder(Color.RED, 1));
+			lblNums[idx].setPreferredSize(LBLNUM_SIZE);
+
+			if ((idx + 1) % 7 == 0) {
+				pnlLine[line].add(lblNums[idx]);
+				pnlCenter.add(pnlLine[line]);
+				// 7개의 레이블이 붙은 pnlLine을 pnlCenter에 붙인다.
+				line++;
+			} else {
+				pnlLine[line].add(lblNums[idx]);
+				pnlCenter.add(pnlLine[line]);
+			}
+		}
+		for (int idx = 0; idx < pnlLine.length; idx++) {
+			pnlCenter.add(pnlLine[idx]);
+		}
+		pnlLine[6].setBorder(new EmptyBorder(0, 0, 0, 100));
+
+	}
+
+	private void setDisplay() {
+		JLabel lblRound = new JLabel("1회차", JLabel.CENTER);
+		pnlNorth.add(lblRound);
+
+		pnlSouth.add(rbtnAuto);
+		pnlSouth.add(rbtnHand);
+
+		pnlRound.add(pnlNorth, BorderLayout.NORTH);
+		pnlRound.add(pnlCenter, BorderLayout.CENTER);
+		pnlRound.add(pnlSouth, BorderLayout.SOUTH);
+	}
+
+private void addListeners() {
+		
+		ItemListener iListener = (ie) -> {
+			JRadioButton src = (JRadioButton)ie.getSource();
+			if(ie.getStateChange() == ItemEvent.SELECTED) {
+				if(src == rbtnAuto) {
+					// 자동버튼 눌렀을 때의 할 일 정의
+					while(autoBall.size() < 6) {
+						// 2, 5, 6, 16, 33, 44
+						int random = (int)(Math.random() * 45 + 1);
+						autoBall.add(random);
+					}
+					
+					for(Integer ball : autoBall) {
+						int selectBall = (int)ball;
+						
+						//lblNums[selectBall-1].setBorder(new LineBorder(Color.BLACK, 3));
+						lblNums[selectBall-1].setOpaque(true);
+						lblNums[selectBall-1].setBackground(Color.BLACK);
+						lblNums[selectBall-1].setFont(new Font(Font.DIALOG, Font.BOLD, 15));
+						lblNums[selectBall-1].setForeground(Color.WHITE);
+						
+					}
+				} else {
+					// 수동버튼 눌렀을 때의 할 일 정의
+					for(Integer ball : autoBall) {
+						int selectBall = (int)ball;
+						
+						lblNums[selectBall-1].setBackground(null);
+						lblNums[selectBall-1].setFont(new Font(Font.DIALOG, Font.BOLD, 12));
+						lblNums[selectBall-1].setForeground(null);
+						
+					}
+				}
+			} else {
+				for(int idx=0; idx<lblNums.length; idx++) {
+					lblNums[idx].setBackground(null);
+					lblNums[idx].setFont(new Font(Font.DIALOG, Font.BOLD, 12));
+					lblNums[idx].setForeground(null);
+				}
+				
+			}
+			
+		};
+		MouseListener mListener = new MouseAdapter() {
+			//선택된 레이블 개수를 반환
+			private int getClicked() {
+				int clicked = 0;
+				for(int idx=0; idx<lblNums.length; idx++) {
+					//레이블의 배경색이 검정일 때만 선택된 것으로 간주한다.
+					if(lblNums[idx].getBackground().equals(Color.BLACK)) {
+						clicked++;
+					}
+				}
+				return clicked;
+			}
+					
+			@Override
+			public void mouseClicked(MouseEvent me) {
+				if(getClicked() < 6) {
+					JLabel src = (JLabel)me.getSource();
+					src.setOpaque(true);
+					src.setBackground(Color.BLACK);
+					src.setFont(new Font(Font.DIALOG, Font.BOLD, 15));
+					src.setForeground(Color.WHITE);
+				} else {
+					showWarningMessage();
+				}
+			}
+
+		};
+		
+		rbtnAuto.addItemListener(iListener);
+		rbtnHand.addItemListener(iListener);
+		for(int idx = 0; idx<45; idx++) {
+			lblNums[idx].addMouseListener(mListener);
+		}
+	}
+
+	private void showWarningMessage() {
+		JOptionPane.showConfirmDialog(
+				this, 
+				"6개이상 선택하실 수 없습니다.", 
+				"선택 초과", 
+				JOptionPane.DEFAULT_OPTION, 
+				JOptionPane.WARNING_MESSAGE
+		);
+	}
+}

@@ -1,8 +1,0 @@
-package ex;
-
-public class HumanEx {
-
-	private Ipeakable sp;
-	
-	
-}

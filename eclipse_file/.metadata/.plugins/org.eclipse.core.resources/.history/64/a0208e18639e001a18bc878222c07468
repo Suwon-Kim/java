@@ -1,0 +1,63 @@
+import java.awt.Dimension;
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+
+class LottoPaper extends JFrame {
+	private JLabel lblRound;
+	private JLabel[] lblNums;
+	
+	private JPanel pnlRound;
+	
+	private JRadioButton rbtnAuto;
+	private JRadioButton rbtnHand;
+	
+	public LottoPaper() {
+		init();
+		setDisplay();
+		addListeners();
+		showFrame();
+	}
+	private void init() {
+		lblRound = new JLabel("회차");
+		lblNums = new JLabel[45];	//배열의 길이만 45라고 선언된 상태
+		for(int idx = 0; idx < lblNums.length; idx++) {
+			lblNums[idx] = new JLabel(String.valueOf(idx + 1));
+			lblNums[idx].setSize(new Dimension(20,20));
+		}
+		
+		rbtnAuto = new JRadioButton("자동");
+		rbtnHand = new JRadioButton("수동",true);
+		
+	}
+	private void setDisplay() {
+		JPanel pnlSouth = new JPanel();
+		JPanel pnlCenter = new JPanel(new GridLayout(7,7));
+		
+
+		
+		// JPanel pnlLine = new JPanel();
+		JPanel[] pnlLine = new JPanel[7];
+		
+		JPanel pnlNorth = new JPanel();
+		
+		pnlSouth.add(lblRound);
+	
+	}
+	private void addListeners() {
+		
+	}
+	private void showFrame() {
+		setTitle("d");
+		pack();
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+	public static void main(String[] args) {
+		new LottoPaper();
+	}
+} 

@@ -1,0 +1,13 @@
+package kr.ac.green;
+
+import java.io.File;
+
+public class FileEx3 {
+	
+	public static void main(String[] args) {
+		File f = new File("c:\\a\\b\\c\\d");
+		//파일은 뒤에 확장자가 있지만 없으므로 디렉토리임 (폴더이름)
+		
+		f.mkdir();
+	}
+}

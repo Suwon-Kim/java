@@ -1,0 +1,21 @@
+package kr.ac.green;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+public class TimeFormatting {
+	public static void main(String[] args) {
+		File f = new File("c: \\study\\a.txt");
+		long time = f.lastModified();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd()");
+		// SimpleDateFormat이라는 클래스안의 표만 참고 하면 된다.
+		
+		Date today = new Date(); // 현재시간을 나타내는놈
+		String strToday = sdf.format(today);
+		today.setTime(time);	 // 특정의 시간을 나타내고 싶으면 
+		// 현재 시간
+		
+		System.out.println(strToday);
+	}
+}

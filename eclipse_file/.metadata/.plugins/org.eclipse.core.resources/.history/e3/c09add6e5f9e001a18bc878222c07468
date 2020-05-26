@@ -1,0 +1,59 @@
+import java.awt.BorderLayout;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+
+class LottoPaper extends JPanel {
+	private JLabel lblRound;
+	private JLabel[] lblNums;
+	
+	private JPanel pnlRound;
+	
+	private JRadioButton rbtnAuto;
+	private JRadioButton rbtnHand;
+	
+	public LottoPaper() {
+		init();
+		setDisplay();
+		addListeners();
+		showFrame();
+	}
+	private void init() {
+		lblRound = new JLabel("회차");
+		lblNums = new JLabel[45];
+		
+		rbtnAuto = new JRadioButton("자동");
+		rbtnHand = new JRadioButton("수동",true);
+		
+		
+			
+	}
+	private void setDisplay() {
+		JPanel pnlSouth = new JPanel();
+		JPanel pnlCenter = new JPanel();
+		
+		// JPanel pnlLine = new JPanel();
+		JPanel[] pnlLine = new JPanel[7];
+		
+		JPanel pnlNorth = new JPanel();
+		
+		pnlSouth.add(lblRound);
+		
+		for(int idx = 0; idx < lblNums.length; idx++) {
+			lblNums[idx] = new JLabel(String.valueOf(idx + 1));
+			System.out.println(lblNums[idx]);
+		}
+		System.out.println(lblNums);
+		
+	}
+	private void addListeners() {
+		
+	}
+	private void showFrame() {
+		
+	}
+	public static void main(String[] args) {
+		new LottoPaper();
+	}
+} 

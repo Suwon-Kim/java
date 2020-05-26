@@ -1,6 +1,0 @@
-package ex;
-
-@FunctionalInterface
-interface ISpeakableEx {
-	 void speak();
-}
