@@ -21,7 +21,7 @@ public class CharIO {
 		} finally {
 			MyUtils.closeAll(fw);
 		}
-		/////
+		
 	}
 	public static void readFromFile() {
 		FileReader fr = null;
