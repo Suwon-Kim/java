@@ -1,0 +1,21 @@
+package kr.ac.green;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
+public class AdvancedCopy1 {
+	public static void newCopy() {
+		File src = new File("c:\\dev\\eclipse.zip");
+		File copy = new File("c:\\dev\\copy.zip");
+		
+		FileInputStream fis = null;
+		FileOutputStream fos = null;
+		
+		long time = System.currentTimeMillis();
+		System.out.println(time);
+	}
+	public static void main(String[] args) {
+		newCopy();
+	}
+}

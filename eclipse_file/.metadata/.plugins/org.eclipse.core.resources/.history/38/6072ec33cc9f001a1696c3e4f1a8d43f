@@ -1,0 +1,16 @@
+package kr.ac.green;
+
+import java.io.File;
+
+public class Quiz2 {
+	public static void copy(File src) {
+		// File src = new File("apple.jpg");
+		src = src.getAbsoluteFile();
+		System.out.println(src);
+	}
+	
+	
+	public static void main(String[] args) {
+		copy(new File("apple.jpg"));
+	}
+}
