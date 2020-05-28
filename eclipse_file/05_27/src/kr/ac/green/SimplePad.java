@@ -2,6 +2,7 @@ package kr.ac.green;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -16,12 +17,14 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.KeyStroke;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.Document;
 
 public class SimplePad extends JFrame {
 	
+	private String newFile;
 	private JMenuBar mBar;
 	private JMenu mFile;
 	private JMenuItem miOpen;
@@ -30,6 +33,7 @@ public class SimplePad extends JFrame {
 	private JMenuItem miSaveAs;
 	private JMenuItem miNew;
 	private JTextArea taEditor;
+	private KeyStroke ks;
 	
 	private JFileChooser chooser;
 	private String title = "SimplePad ver0.9";
@@ -63,6 +67,9 @@ public class SimplePad extends JFrame {
 		taEditor.setTabSize(4);
 		
 		chooser = new JFileChooser(".");
+		
+		ks = KeyStroke.getKeyStroke('S',InputEvent.CTRL_MASK);
+		miSaveAs.setAccelerator(ks);
 	}
 
 	private void setDisplay() {
@@ -81,7 +88,7 @@ public class SimplePad extends JFrame {
 			else if(o == miSave) {
 				save();
 			} else if (o == miSaveAs) {
-				//saveAs();
+				saveAs();
 			}
 			else {
 				System.exit(0);
@@ -109,7 +116,33 @@ public class SimplePad extends JFrame {
 		});
 	}
 	private void newFile() {
-		
+		if(taEditor.getText().length() == 0) {
+			
+		} else {
+			int result = JOptionPane.showConfirmDialog(
+					this,
+					"저장하시겠습니까?",
+					"메모장",
+					JOptionPane.YES_NO_CANCEL_OPTION
+			);
+			if(result == 0) {
+				int realResult = chooser.showOpenDialog(this);
+				File file = chooser.getSelectedFile();
+				FileWriter fw = null;
+				try {
+					fw = new FileWriter(file);
+					fw.write(taEditor.getText());
+					fw.flush();
+				} catch (IOException e) {
+					
+				} finally {
+					MyUtils.closeAll(fw);
+				}
+			}
+			if(result == 1) {
+				taEditor.setText(null);
+			}
+		}
 		
 	}
 	private void open() {
@@ -154,21 +187,28 @@ public class SimplePad extends JFrame {
 			}
 		}
 	}
-//	private void saveAs() {
-//		FileWriter fw = null;
-//		if() {
-//			
-//		}
-//		try {
-//			fw = new FileWriter(file);
-//			fw.write(taEditor.getText());
-//		} catch (IOException e) {
-//			JOptionPane.showMessageDialog(this, "저장중 에러발생");
-//		} finally {
-//			MyUtils.closeAll(fw);
-//		}
-//	}
-//	
+	private void saveAs() {
+		int result = chooser.showSaveDialog(this);
+		if(result == JFileChooser.APPROVE_OPTION) {
+			File file = chooser.getSelectedFile();
+			FileWriter fw = null;
+			try {
+				fw = new FileWriter(file);
+				fw.write(taEditor.getText());
+				fw.flush();
+			} catch (IOException e) {
+				
+			} finally {
+				MyUtils.closeAll(fw);
+			}
+			
+		}
+		
+		//컨트롤 s를 눌렀을 때 --> ks 
+		
+	}
+	
+	
 	private void showFrame() {
 		setTitle(title);
 		setSize(500, 600);
