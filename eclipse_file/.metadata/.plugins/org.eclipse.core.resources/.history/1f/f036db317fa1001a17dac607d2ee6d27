@@ -1,0 +1,14 @@
+package kr.ac.green;
+
+import java.util.Vector;
+
+public class Members {
+	private Vector<Member> members = new Vector<Member>();
+	
+	public Vector<Member> getMembers() {
+		return members;
+	}
+	public void setMembers(Member member) {
+		this.members.add(member);
+	}
+}

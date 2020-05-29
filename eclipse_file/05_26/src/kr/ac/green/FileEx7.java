@@ -58,7 +58,7 @@ public class FileEx7 {
  * 2. ¼øÂ÷Àû
  * 
  *  byte - I : InputStream
- *  	 - O : OutputStram
+ *  	 - O : OutputStream
 --------------------------------
  *  char - I : Reader
  * 		 - O : Writer

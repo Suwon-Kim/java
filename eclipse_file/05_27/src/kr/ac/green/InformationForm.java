@@ -5,26 +5,35 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.TitledBorder;
 
-public class InformationForm extends JFrame {
+public class InformationForm extends JDialog {
 	private JTextArea taInfo;
 	private JButton btnLogout;
 	private JButton btnWithdraw;
 	
+	private String checkId;
+	private String checkPassword;
+	private String checkRetry;
+	private String checkName;
+	private String checkNickName;
+	
+	//LoginForm owner = loginForm
 	public InformationForm() {
 		init();
 		setDisplay();
 		addListeners();
 		showFrame();
 	}
+	
 	private void init() {
 		taInfo = new JTextArea(20,50);
 		btnLogout = new JButton("Logout");
 		btnWithdraw = new JButton("Withdraw");
+		
 	}
 	private void setDisplay() {
 		JPanel pnlCenter = new JPanel();
@@ -49,13 +58,13 @@ public class InformationForm extends JFrame {
 				Object o = ae.getSource();
 				if(btnLogout.equals(ae.getSource())){
 					dispose();
-					new LoginForm();
 					System.out.println("InformationForm으로 이동");
 				}
 				if(btnWithdraw.equals(ae.getSource())) {
-					new JoinForm();
-					System.out.println("JoinForm으로 이동");
+					dispose();
+					System.out.println("JoinForm으로 이동");		
 				}
+					
 			}
 		};
 		btnLogout.addActionListener(listeners);
@@ -64,12 +73,12 @@ public class InformationForm extends JFrame {
 	private void showFrame() {
 		setTitle("Information");
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		pack();
 		setVisible(true);
 	}
-	
-	public static void main(String[] args) {
-		new InformationForm();
+	public void taInfo(String string) {
+		
+		
 	}
 }

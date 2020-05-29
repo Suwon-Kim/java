@@ -1,0 +1,115 @@
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+public class LoginForm extends JFrame {
+
+	private JLabel lblId;
+	private JLabel lblPass;
+
+	private JTextField tfId;
+	private JTextField tfPass;
+
+	private JButton btnlogin;
+	private JButton btnjoin;
+	
+	public LoginForm() {
+		init();
+		setDisplay();
+		addListeners();
+		showFrame();
+	}
+
+	private void init() {
+
+		lblId = new JLabel("ID");
+		lblPass = new JLabel("PassWord");
+
+		tfId = new JTextField(10);
+		tfPass = new JTextField(10);
+
+		btnlogin = new JButton("login");
+		btnjoin = new JButton("join");
+
+	}
+
+	private void setDisplay() {
+
+		JPanel pnlWest = new JPanel(new GridLayout(0, 1, 0, 5));
+		pnlWest.add(lblId);
+		pnlWest.add(lblPass);
+
+		JPanel pnlEast = new JPanel(new GridLayout(0, 1, 0, 5));
+		pnlEast.add(tfId);
+		pnlEast.add(tfPass);
+
+		JPanel pnlSouth = new JPanel();
+		pnlSouth.add(btnlogin);
+		pnlSouth.add(btnjoin);
+
+		JPanel pnlCenter = new JPanel(new GridLayout(1, 0));
+		pnlCenter.setBorder(new EmptyBorder(15, 15, 15, 15));
+
+		pnlCenter.add(pnlWest);
+		pnlCenter.add(pnlEast);
+
+		add(pnlCenter, BorderLayout.CENTER);
+		add(pnlSouth, BorderLayout.SOUTH);
+	}
+
+	private void addListeners() {
+
+		btnjoin.addActionListener((e) -> {
+
+			new JoinForm();
+
+		});
+
+		btnlogin.addActionListener((e) -> {
+
+			try {
+				String s;
+				String[] array;
+				BufferedReader bos = new BufferedReader(new FileReader("회원명단.txt"));
+				while ((s = bos.readLine()) !=null) {
+					array = s.split("/");
+					if (tfId.getText().equals(array[0]) && 
+							tfPass.getText().equals(array[1]))
+					{
+					JOptionPane.showMessageDialog(null, "로그인성공");
+					new Information();
+					return;
+				} else {
+					JOptionPane.showMessageDialog(null, "로그인실패");
+					return;
+				}
+			} 
+				
+			}catch (IOException e2) {
+				e2.printStackTrace();
+			}
+		});
+	}
+
+	private void showFrame() {
+		setTitle("프로그램");
+		pack();
+		setResizable(false);
+		setLocationRelativeTo(null);
+		setVisible(true);
+	}
+
+	public static void main(String[] args) {
+		new LoginForm();
+	}
+}
