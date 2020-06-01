@@ -1,0 +1,23 @@
+import java.io.DataOutputStream;
+import java.io.FileOutputStream;
+import java.util.Random;
+
+public class IOEx1 {
+	public static void save() {
+		FileOutputStream fos = null;
+		DataOutputStream dos = null;
+		
+//		try {
+//			fos = new FileOutputStream("data.dat");
+//			dos = new DataOutputStream(fos);
+//			Random r = new Random();
+//			int num = r.nextInt(50) + 3;
+//			System.out.println(num);
+//		}
+	}
+	public static void main(String[] args) {
+		Random r = new Random();
+		int num = r.nextInt(3) + 3;
+		System.out.println(num);
+	}
+}

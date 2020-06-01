@@ -1,0 +1,73 @@
+package kr.ac.green;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class IOEx1 {
+	
+	public static void save() {
+		FileOutputStream fos = null;
+		DataOutputStream dos = null;
+		
+		try {
+			fos = new FileOutputStream("data.dat");
+			dos = new DataOutputStream(fos);
+			
+			//순서를 잘봐야한다. 읽을 때도 인트 더블 불리언 유티페로 순서를 맞춰 줘야한다.
+			//여러줄이여도 
+			dos.writeInt(3);
+			dos.writeDouble(3.14);
+			dos.writeBoolean(false);
+			// 문자열 쓰기
+			dos.writeUTF("abc\ndef");
+			dos.writeUTF("한\n글");
+			dos.flush();
+		} catch(IOException e) {
+			e.printStackTrace();
+		} finally {
+			MyUtils.closeAll(dos, fos);
+		}
+	}
+	public static void load() {
+		FileInputStream fis = null;
+		DataInputStream dis = null;
+		try {
+			fis = new FileInputStream("data.dat");
+			dis = new DataInputStream(fis);
+			
+			int n = dis.readInt();
+			double d = dis.readDouble();
+			boolean b = dis.readBoolean();
+			String str = dis.readUTF();
+			String str1 = dis.readUTF();
+			//쓸 때의 순서에 맞게 읽지 않으면 오류!
+			
+			System.out.println(n);
+			System.out.println(d);
+			System.out.println(b);
+			System.out.println(str);
+			System.out.println(str1);
+		} catch(IOException e) {
+			e.printStackTrace();
+		} finally {
+			MyUtils.closeAll(dis, fis);
+		}
+	} 
+	public static void main(String[] args) {
+		save();
+		load();
+	}
+}
+
+
+
+
+
+
+
+
+
+
