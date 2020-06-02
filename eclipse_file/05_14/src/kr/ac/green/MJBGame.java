@@ -1,21 +1,22 @@
+package kr.ac.green;
+
+import java.awt.GridLayout;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 
 public class MJBGame extends JFrame {
 	public static final int WIN_CASE = -1;
-	public static final int WIN_CASE = 2;
 	
 	private JRadioButton[] rbtns = {
 			new JRadioButton ("¹¬"),
 			new JRadioButton ("Âî"),
 			new JRadioButton ("ºü")
 	};
-	
-	private JButton btnStart;
-	private JTextArea taResult;
 	
 	private JButton btnStart;
 	private JTextArea taResult;
@@ -27,6 +28,13 @@ public class MJBGame extends JFrame {
 		showFrame();
 	}
 	
+	private void showFrame() {
+	}
+
+	private void addListeners() {
+		
+	}
+
 	private void init() {
 		btnStart = new JButton("½ÃÀÛ");
 		taResult = new JTextArea(4,20);
@@ -39,7 +47,6 @@ public class MJBGame extends JFrame {
 	
 	private void setDisplay() {
 		JPanel pnlNorth = new JPanel(new GridLayout(1,3));
-		for
 	}
 	
 }
