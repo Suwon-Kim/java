@@ -1,0 +1,15 @@
+import java.io.FileOutputStream;
+
+/*
+ *  ObjectInputStream, ObjectOutputStream
+ *  - > 필터 (읽고 쓰는 대상을 선정할 수 없다.)
+ */
+public class IOEx1 {
+	// instance - > File
+	public static void save() {
+		FileOutputStream fos = null
+	}
+	public static void main(String[] args) {
+		
+	}
+}

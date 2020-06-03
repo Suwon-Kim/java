@@ -1,0 +1,47 @@
+
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class ObjectIO extends JFrame implements ActionListener{
+
+	private JButton btnSave;
+	private JButton btnOpen;
+	private JButton btnNew;
+	
+	private JFrame counter;
+	
+	public ObjectIO() {
+		btnNew = new JButton("Save");
+		btnOpen = new JButton("Open");
+		btnSave = new JButton("Save");
+		
+		setLayout(new GridLayout(1, 0));
+		
+		add(btnNew);
+		add(btnSave);
+		add(btnOpen);
+		
+		btnNew.addActionListener(this);
+		btnSave.addActionListener(this);
+		btnOpen.addActionListener(this);
+		
+		setTitle("IO Ex");
+		setSize(400, 100);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		
+	}
+
+	public static void main(String[] args) {
+		new ObjectIO();
+	}
+}

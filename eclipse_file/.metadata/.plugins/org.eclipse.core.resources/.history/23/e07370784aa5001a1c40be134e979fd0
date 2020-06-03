@@ -1,0 +1,45 @@
+import java.io.Serializable;
+
+public class Foo implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1;	//내가 직접 관리하는거
+	private int num;
+	private String str;
+	private double pi;
+	public Foo(int num, String str) {
+		super();
+		this.num = num;
+		this.str = str;
+	}
+	public Foo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public double getPi() {
+		return pi;
+	}
+	public void setPi(double pi) {
+		this.pi = pi;
+	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	public String getStr() {
+		return str;
+	}
+	public void setStr(String str) {
+		this.str = str;
+	}
+	@Override
+	public String toString() {
+		return "Foo [num=" + num + ", str=" + str + "]";
+	}
+	
+	
+}

@@ -1,0 +1,62 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOError;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+/*
+ *  ObjectInputStream, ObjectOutputStream
+ *  - > 필터 (읽고 쓰는 대상을 선정할 수 없다.)
+ */
+public class IOEx1 {
+	// instance - > File
+	public static void save() {	//쓰기
+		FileOutputStream fos = null;
+		ObjectOutputStream oos = null;
+		
+		try {
+			fos = new FileOutputStream("data.dat");
+			oos = new ObjectOutputStream(fos);
+			// 파일에 객체를 쓸 때는 한 파일당 한개의 객체만 쓰자 
+			oos.writeObject(new MyObj("abc",200));
+			oos.flush();
+			oos.reset(); //반드시 호출해줘야 함
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			MyUtils.closeAll(oos,fos);
+		}
+		 
+	}
+	public static void load() {
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		
+			try {
+				fis = new FileInputStream("data.dat");
+				ois = new ObjectInputStream(fis);
+				
+				Object o = ois.readObject();
+				System.out.println(o);
+			} catch (FileNotFoundException e) {
+				
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				
+				e.printStackTrace();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			} // 얘는 루프를 돌지 않아도 됨
+		
+		
+	}
+	public static void main(String[] args) {
+		//save();
+		load();
+	}
+}
