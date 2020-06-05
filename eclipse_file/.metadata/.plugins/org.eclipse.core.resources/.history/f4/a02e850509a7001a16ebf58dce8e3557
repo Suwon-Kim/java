@@ -1,0 +1,95 @@
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+/*
+ * MVC
+ * Model : 데이터 -> ListModel
+ * View : 어떻게 보여지는가? -> ListCellRenderer
+ * Controller : 기능 -> JList
+ */
+public class ListEx extends JFrame implements ActionListener {
+	
+	private JList<Human> list;
+	private DefaultListModel<Human> model;
+	private JTextField tfName;
+	private JTextField tfAge;
+	private JRadioButton rbtnMale;
+	private JRadioButton rbtnFemale;
+	private JButton btnAdd;
+	public ListEx() {
+		model = new DefaultListModel<Human>();
+		list = new JList<Human>();
+		list.setVisibleRowCount(5);
+		
+		tfName = new JTextField(15);
+		tfAge = new JTextField(5);
+		rbtnMale = new JRadioButton("Male");
+		rbtnFemale = new JRadioButton("Female", true);
+		ButtonGroup group = new ButtonGroup();
+		group.add(rbtnMale);
+		group.add(rbtnFemale);
+		btnAdd = new JButton("Add");
+		
+		list.setPrototypeCellValue(new Human("aaaaaaaaaaa", 100, Human.FEMALE));
+		// JScrollPane에 감싸져있을때만 동작
+		
+		JPanel pnlSouth = new JPanel(new GridLayout(0, 1));
+		pnlSouth.add(tfName);
+		pnlSouth.add(tfAge);
+		JPanel pnlGender = new JPanel();
+		pnlGender.add(rbtnMale);
+		pnlGender.add(rbtnFemale);
+		pnlSouth.add(pnlGender);
+		pnlSouth.add(btnAdd);
+		
+		
+		add(new JScrollPane(list), BorderLayout.CENTER);
+		add(pnlSouth, BorderLayout.SOUTH);
+		
+		btnAdd.addActionListener(this);
+		
+		setTitle("JListEx");
+		pack();
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String name = tfName.getText();
+		int age = Integer.parseInt(tfAge.getText());
+		boolean gender = Human.MALE;
+		if(rbtnFemale.isSelected()) {
+			gender = Human.FEMALE;			
+		}
+		
+		Human h = new Human(name, age, gender);
+		System.out.println(h);
+		model.addElement(h);
+	}
+
+
+	public static void main(String[] args) {
+		new ListEx();
+	}
+}
+
+
+
+
+
+

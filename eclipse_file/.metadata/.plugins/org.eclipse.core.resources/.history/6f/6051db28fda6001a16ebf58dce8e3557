@@ -1,0 +1,38 @@
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class MyCalendar extends JFrame{
+	private int year;					//년
+	private int month;					//월
+	
+	private JLabel[] lblWeek;			//요일 레이블 배열(SUN, MON, ..., SAT)
+	private JLabel[] lblDay;			//일 레이블 배열(1,2,3,....,31)
+	
+	private String[] weeks = {"SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"};
+	private int[] MAX_DAYS = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	private int[] LEAP_MAX_DAYS = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	
+	public MyCalendar() {
+		init();
+		setDisplay();
+		addListeners();
+		showFrame();
+	}
+	private void init() {
+		
+	}
+	private void setDisplay() {
+		
+	}
+	private void addListeners() {
+		
+	}
+	private void showFrame() {
+		setTitle("dd");
+		pack();
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+}
