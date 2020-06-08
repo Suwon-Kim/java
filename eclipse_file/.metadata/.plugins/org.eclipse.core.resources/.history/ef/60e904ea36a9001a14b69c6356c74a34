@@ -1,0 +1,21 @@
+import java.awt.Dimension;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class Test extends JPanel {
+	public static final Dimension LBL_SIZE = new Dimension(70,50);
+	
+	private int year;	//년
+	private int month;	//월
+	
+	private JLabel[] lblWeek;	//요일 레이블 배열 (SUN, MON, ... SAT)
+	private JLabel[] lblDay;	//일 레이블 배열 (1,2,3,....31)
+	
+	private String[] weeks = {"SUN","MON","TUE","WED","THU","FRI","SAT"};
+	private int[] MAX_DAYS = {31,28,31,30,31,30,31,31,30,31,30,31};
+	private int[] LEAP_MAX_DAYS = {31,29,31,30,31,30,31,31,30,31,30,31};
+	
+	public Test 
+	
+}

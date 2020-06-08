@@ -16,8 +16,10 @@
 		<list key="textArray">
 		</list>
 	</section>
+	<section name="NewWizardAction">
+	</section>
 	<section name="ImportExportAction">
-		<item value="org.eclipse.ui.wizards.import.ExternalProject" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
+		<item value="org.eclipse.ui.wizards.import.FileSystem" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
 		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
 			<item value="org.eclipse.ui.Basic"/>
 		</list>
@@ -26,6 +28,7 @@
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID"/>
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="C:\Users\user\Desktop\StudyMemo"/>
 			<item value="C:\Users\user\Desktop\Lotto"/>
 			<item value="C:\Users\user\Desktop\05_13"/>
 			<item value="D:\java\Eclipse_File\05_11"/>

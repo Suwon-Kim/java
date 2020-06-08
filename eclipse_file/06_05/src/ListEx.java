@@ -120,10 +120,8 @@ public class ListEx extends JFrame implements ActionListener {
 				pnl.setBorder(new LineBorder(Color.GRAY, 1));
 			}
 			return pnl;
-		}
-		
+		}	
 	}
-
 	public static void main(String[] args) {
 		new ListEx();
 	}

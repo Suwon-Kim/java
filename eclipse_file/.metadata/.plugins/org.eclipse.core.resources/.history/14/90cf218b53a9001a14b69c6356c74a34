@@ -1,0 +1,99 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
+public class SearchResult extends JDialog {
+	private JLabel lblSearchImg;
+	private JTextField lblSearchContent;
+	
+	private JButton btnSearch;
+	
+	private JLabel lblFileTitle;
+	private JLabel lblFileDate;
+	private JLabel lblFileSize;
+	
+	private JTextArea taContent;
+	
+	private JButton btnClose;
+	
+	public SearchResult() {
+		init();
+		setDisplay();
+		showDialog();
+		addListeners();
+	}
+	public void init() {
+
+		lblSearchImg = new JLabel(new ImageIcon("search.png"), JLabel.LEFT);
+		lblSearchContent = new JTextField(20);
+		btnSearch = new JButton("검색");
+		
+		lblFileTitle = new JLabel("파일제목", JLabel.LEFT);
+		lblFileTitle.setBorder(new EmptyBorder(0,20,0,0));
+		lblFileDate = new JLabel("작성일", JLabel.CENTER);
+		lblFileDate.setBorder(new EmptyBorder(0,0,0,20));
+		lblFileSize = new JLabel("크기", JLabel.RIGHT);
+		lblFileSize.setBorder(new EmptyBorder(0,0,0,20));
+
+		
+		taContent = new JTextArea(20,50);
+		
+		btnClose = new JButton("닫기");
+	}
+	public void setDisplay() {
+		JPanel pnlMain = new JPanel(new BorderLayout());
+		pnlMain.setBorder(new EmptyBorder(20,20,20,20));
+		
+		JPanel pnlNorth = new JPanel();
+		pnlNorth.add(lblSearchImg);
+		pnlNorth.add(lblSearchContent);
+		pnlNorth.add(btnSearch);
+		
+		JPanel pnlFileTitle = new JPanel(new BorderLayout());
+		pnlFileTitle.setPreferredSize(new Dimension(360,30));
+		pnlFileTitle.add(lblFileTitle, BorderLayout.WEST);
+		pnlFileTitle.add(lblFileDate, BorderLayout.CENTER);
+		pnlFileTitle.add(lblFileSize, BorderLayout.EAST);
+		pnlFileTitle.setBorder(new LineBorder(Color.BLUE, 2));
+		
+		JPanel pnlFile = new JPanel(new BorderLayout());
+		pnlFile.add(taContent);
+		
+		JPanel pnlCenter = new JPanel();
+		pnlCenter.add(pnlFileTitle, BorderLayout.NORTH);
+		pnlCenter.add(pnlFile, BorderLayout.CENTER);
+		
+		JPanel pnlSouth = new JPanel();
+		pnlSouth.add(btnClose);
+		
+		pnlMain.add(pnlNorth, BorderLayout.NORTH);
+		pnlMain.add(pnlCenter, BorderLayout.CENTER);
+		pnlMain.add(pnlSouth, BorderLayout.SOUTH);
+		
+		add(pnlMain);
+		
+	}
+	public void showDialog() {
+		setTitle("검색 결과");
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		pack();
+		setVisible(true);
+	}
+	public void addListeners() {
+		
+	}
+	public static void main(String[] args) {
+		new SearchResult();
+	}
+}
