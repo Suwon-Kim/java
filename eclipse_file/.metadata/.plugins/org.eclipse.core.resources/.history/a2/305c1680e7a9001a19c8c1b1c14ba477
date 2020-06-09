@@ -214,8 +214,7 @@ public class StudyMemo extends JFrame{
 				}
 				
 			} else if(o == btnSearch) {
-				String searchContent = tfInput.getText();
-				new Search_Result(searchContent);
+				new Search_Result(tfInput.getText());
 			} else if(o == btnToday) {
 				//today 버튼 눌렀을 경우의 할 일 정의.
 				Calendar cal = Calendar.getInstance();

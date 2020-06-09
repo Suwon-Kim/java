@@ -70,13 +70,8 @@ public class MyMemo extends JDialog{
 		showDlg();
 	}
 	public MyMemo() {
-		
+		fileListLoad(selectDay);
 	}
-	public String getTitle() {
-		return tfTitle.getText();
-		
-	}
-	
 	private void init() {
 		lblReportDate = new JLabel("¿€º∫¿œ : ", JLabel.LEFT);
 		lblReportDate.setPreferredSize(LBL_SIZE);
@@ -251,7 +246,6 @@ public class MyMemo extends JDialog{
 		File dateDir = new File(DIR, selectDay);
 		
 		try {
-		
 			fr = new FileReader(dateDir + "\\" + fileName);
 			prop.load(fr);
 			

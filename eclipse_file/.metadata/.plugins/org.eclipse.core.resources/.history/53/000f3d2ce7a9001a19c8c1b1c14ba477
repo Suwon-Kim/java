@@ -1,6 +1,10 @@
 import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -68,13 +72,6 @@ public class MyMemo extends JDialog{
 		setDisplay();
 		addListeners();
 		showDlg();
-	}
-	public MyMemo() {
-		
-	}
-	public String getTitle() {
-		return tfTitle.getText();
-		
 	}
 	
 	private void init() {
@@ -246,12 +243,11 @@ public class MyMemo extends JDialog{
 			}catch(Exception e) {}
 		}
 	}
-	public void fileLoad(String fileName) {
+	private void fileLoad(String fileName) {
 		FileReader fr = null;
 		File dateDir = new File(DIR, selectDay);
 		
 		try {
-		
 			fr = new FileReader(dateDir + "\\" + fileName);
 			prop.load(fr);
 			
@@ -271,7 +267,7 @@ public class MyMemo extends JDialog{
 			}
 		}
 	}
-	public void fileListLoad(String selectDay) {
+	private void fileListLoad(String selectDay) {
 		File dir = new File(DIR, selectDay);
 		
 		int count = 0;

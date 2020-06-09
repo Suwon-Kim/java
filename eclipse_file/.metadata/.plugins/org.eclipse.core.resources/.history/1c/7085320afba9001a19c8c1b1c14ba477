@@ -70,11 +70,7 @@ public class MyMemo extends JDialog{
 		showDlg();
 	}
 	public MyMemo() {
-		
-	}
-	public String getTitle() {
-		return tfTitle.getText();
-		
+		fileListLoad(selectDay);
 	}
 	
 	private void init() {

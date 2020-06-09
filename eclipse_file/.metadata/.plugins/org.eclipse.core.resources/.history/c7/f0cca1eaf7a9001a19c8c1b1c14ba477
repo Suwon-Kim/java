@@ -1,29 +1,35 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 public class Search_Result extends JDialog {
+	public static final File DIR = new File("studyMemo");
+	public static final String EXT = ".txt";
+	
 	private JLabel lblSearchImg;
 	private JTextField lblSearchContent;
+	private String selectDay;
 	
 	private JButton btnSearch;
 	
@@ -35,17 +41,16 @@ public class Search_Result extends JDialog {
 	
 	private JButton btnClose;
 	
+	private Calendar cal;
+	
 	private String searchContent;
-	
-	private MyMemo memoContent;
-	
+
 	public Search_Result(String searchContent) {
 		this.searchContent = searchContent;
 		init();
 		setDisplay();
 		showDialog();
 		addListeners();
-		
 	}
 	
 	public void init() {
@@ -64,6 +69,7 @@ public class Search_Result extends JDialog {
 				
 		btnClose = new JButton("´Ý±â");
 	}
+	
 	public void setDisplay() {
 		JPanel pnlMain = new JPanel(new BorderLayout());
 		pnlMain.setBorder(new EmptyBorder(20,20,20,20));
@@ -126,6 +132,26 @@ public class Search_Result extends JDialog {
 						}
 						
 					}
+					FileWriter fw = null;
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+					
+					selectDay = sdf.format(cal.getTime());
+					
+					JLabel lblToday = new JLabel(selectDay);
+					
+					try {
+						File dir = new File(DIR, selectDay);
+						File dataDir = new File(DIR, dir);
+					} catch(IOException e) {
+						e.printStackTrace();
+					}
+					FileReader fr = null;
+					File dateDir = new File(DIR, selectDay);
+					if(!dateDir.exists()) {
+						dateDir.mkdirs();
+						
+					}
+					
 				}
 			}
 		};
