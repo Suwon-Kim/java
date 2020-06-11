@@ -1,0 +1,15 @@
+//import java.awt.Dimension;
+//import java.util.Date;
+//
+//import javax.swing.JFrame;
+//
+//public class StudyMemo extends JFrame {
+//	public static final Dimension BTN_SIZE = new Dimension(50,30);
+//	
+//	private Date date = new Date();
+//	
+//	private int curYear;	//현재 년
+//	private int curMonth;	//현재 월
+//	
+//	private JLabel lblToday;
+//}

@@ -1,0 +1,169 @@
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Insets;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+public class StudyMemo extends JFrame {
+	public static final Dimension BTN_SIZE = new Dimension(50,30);
+	
+	private Date date = new Date();	//date 현재 시간이 담긴다 (년,월,일,요일,시간)( 파일 만든 시간 )
+	
+	private int curYear;	//현재 년
+	private int curMonth;	//현재 월
+	
+	private JLabel lblToday;	//오늘 날짜를 나타내는 레이블
+	private JLabel lblSelect;	//사용자가 택한 년월 레이블
+	
+	private JPanel pnlCal;
+	
+	private JComboBox<String> cbYear;
+	private JComboBox<String> cbMonth;
+	
+	private JButton btnCheck;
+	private JButton btnSearch;
+	private JButton btnLeft;
+	private JButton btnRight;
+	private JButton btnToday;
+	
+	private JTextField tfInput;
+	
+	private String[] years = new String[61];	//년 콤보박스에 나타낼 원소 리스트
+	private String[] months = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+	
+	private SimpleDateFormat sdf;
+	
+	private MyCalendar myCal;
+	
+	public StudyMemo() {
+		init();
+		setDisplay();
+		addListeners();
+		showFrame();
+	}
+	public int getCurrentYear() {
+		return curYear;	//년은 반환 (int)
+	}
+	public int getCurrentMonth() {
+		return curMonth;
+	}
+	private void init() {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		
+		curYear = cal.get(Calendar.YEAR);			
+		curMonth = cal.get(Calendar.MONTH) + 1;
+		
+		myCal = new MyCalendar(date, curYear, curMonth);	//현재 시간, 년, 월을 가지고 옴
+		
+		sdf = new SimpleDateFormat("yyyy년 MM월 dd일 E요일");
+		
+		lblToday = new JLabel(sdf.format(date));
+		//현재 시간 -> "yyyy년 MM월 dd일 E요일" 형식으로 변환해서 lblToday 텍스트로 설정
+		lblToday.setFont(new Font(Font.DIALOG, Font.BOLD, 13));
+		
+		sdf = new SimpleDateFormat("yyyy.MM"); 
+		
+		lblSelect = new JLabel(sdf.format(date));
+		//현재 시간 - > "yyyy.MM" 형식으로 변환해서 lblSelect 텍스트로 설정.
+		
+		lblSelect.setFont(new Font(Font.DIALOG, Font.BOLD, 24));
+		
+		btnLeft = new JButton("◀");
+		btnLeft.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
+		btnLeft.setMargin(new Insets(0,0,0,0));
+		
+		btnRight = new JButton("▶");
+		btnRight.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
+		btnRight.setMargin(new Insets(0,0,0,0));
+		
+		btnCheck = new JButton("조회");
+		btnSearch = new JButton("검색");
+		btnSearch.setToolTipText("파일 제목이나 태그로 검색하세요 ");
+		btnToday = new JButton("Today");
+		
+		tfInput = new JTextField(20);
+		
+		int idx = 0;
+		//2020 - 30 = 1990 ~ 2050 // 
+		for(int i = curYear - 30; i <= curYear+30; i++) {
+			years[idx] = String.valueOf(i);
+			idx++;
+			//idx = 0 ~ 60
+			cbYear = new JComboBox<String>(years);
+			cbYear.setSelectedItem(String.valueOf(curYear));
+			cbMonth = new JComboBox<String>(months);
+			cbMonth.setSelectedItem(String.valueOf(curMonth));
+
+		}
+			
+	}
+	private void setDisplay() {
+		JPanel pnlNorth = new JPanel(new BorderLayout());
+		//pnlNorth : 캘린더 윗부분 전체
+		JPanel pnlSelect = new JPanel();
+		//왼쪽버튼 + yyyy.MM + 오른쪽 버튼
+		pnlSelect.add(btnLeft);
+		pnlSelect.add(lblSelect);
+		pnlSelect.add(btnRight);
+		
+		JPanel pnlCombo = new JPanel();
+		pnlCombo.add(cbYear);
+		pnlCombo.add(new JLabel("년"));
+		pnlCombo.add(cbMonth);
+		pnlCombo.add(new JLabel("월"));
+		pnlCombo.add(btnCheck);
+		
+		JPanel pnlToday = new JPanel();
+		pnlToday.setBorder(new EmptyBorder(10,0,30,240));
+		JLabel lblSpace = new JLabel();
+		
+		pnlToday.add(lblToday);
+		pnlToday.add(btnToday);
+		
+		pnlNorth.add(pnlToday, BorderLayout.NORTH);
+		pnlNorth.add(pnlSelect, BorderLayout.CENTER);
+		pnlNorth.add(pnlCombo, BorderLayout.SOUTH);
+		
+		pnlCal = myCal.getCalPanel();
+		//pnlCal -- > 캘린더가 들어가 있는 상태
+		JPanel pnlSouth = new JPanel();
+		JLabel lblImage = new JLabel();
+		lblImage.setIcon(new ImageIcon("search.png"));
+		
+		pnlSouth.add(lblImage);
+		pnlSouth.add(tfInput);
+		pnlSouth.add(btnSearch);
+		
+		add(pnlNorth, BorderLayout.NORTH);
+		add(pnlCal, BorderLayout.CENTER);
+		add(pnlSouth, BorderLayout.SOUTH);
+		
+	}
+	
+	public void addListeners() {
+		
+	}
+	public void showFrame() {
+		setTitle("나만의 스터디메모");
+		setSize(500, 600);
+		setResizable(false);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+	public static void main(String[] args) {
+		new StudyMemo();
+	}
+}

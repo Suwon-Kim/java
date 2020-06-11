@@ -1,0 +1,103 @@
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Insets;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class StudyMemo extends JFrame {
+	private static final Dimension BTN_SIZE = new Dimension(50,30);
+	private Date date = new Date();
+	
+	private int curYear; // 현재 년
+	private int curMonth; // 현재 월
+	
+	private JLabel lblToday;	//오늘 날짜를 나타내는 레이블
+	private JLabel lblSelect; 	//사용자가 택한 년원 레이블
+	
+	private JPanel pnlCal;
+	
+	private JComboBox<String> cbYear;
+	private JComboBox<String> cbMonth;
+	
+	private JButton btnCheck;
+	private JButton btnSearch;
+	private JButton btnLeft;
+	private JButton btnRight;
+	private JButton btnToday;
+	
+	private JTextField tfInput;
+	
+	private String[] years = new String[61];
+	private String[] months = {"1","2","3","4","5","6","7","8","9","10","11","12"};
+	
+	private SimpleDateFormat sdf;
+	private MyCalendar myCal;
+	
+	public StudyMemo() {
+		init();
+		//setDisplay();
+		//addListeners();
+		//showFrame();
+	}
+	public int getCurrentYear() {
+		return curYear;
+	}
+	public int getCurrentMonth() {
+		return curMonth;
+	}
+	public void init() {
+		//Date date = new Date() -- > date : Tue Jun 09 18:36:41 KST 2020
+		//cal.getTime() -- > Tue Jun 09 18:36:41 KST 2020
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		
+		curYear = cal.get(Calendar.YEAR);		//curYear = 2020
+		curMonth = cal.get(Calendar.MONTH) + 1;	//curMonth = 6
+		
+		myCal = new MyCalendar(date, curYear, curMonth);
+		//new MyCalendar(Tue Jun 09 18:36:41 KST 2020, 2020, 6)
+		sdf = new SimpleDateFormat("yyyy년 MM월 dd일 E요일");
+		
+		lblToday = new JLabel(sdf.format(date));
+		//lblToday = new JLabel("2020년 06월 09일 화요일");
+		lblToday.setFont(new Font(Font.DIALOG, Font.BOLD, 13));
+		
+		sdf = new SimpleDateFormat("yyyy.MM");
+		lblSelect = new JLabel(sdf.format(date));
+		lblSelect.setFont(new Font(Font.DIALOG, Font.BOLD, 24));
+		
+		btnLeft = new JButton("◀");
+		btnLeft.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
+		btnLeft.setMargin(new Insets(0,0,0,0));
+		
+		btnRight = new JButton("▶");
+		btnRight.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
+		btnRight.setMargin(new Insets(0,0,0,0));
+		
+		btnCheck = new JButton("조회");
+		btnSearch = new JButton("검색");
+		btnSearch.setToolTipText("파일 제목이나 태그로 검색 하세요");
+		btnToday = new JButton("Today");
+		
+		tfInput = new JTextField(20);
+		
+		//curYear = 2020, curMonth = 6
+		int idx = 0;
+		for(int i = curYear - 30; i < curYear + 30; i++) {
+			 years[idx] = String.valueOf(i);
+			 idx++;
+		}
+		
+	}
+	public static void main(String[] args) {
+		new StudyMemo();
+	}
+}

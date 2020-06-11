@@ -1,0 +1,202 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
+public class MyCalendar extends JPanel {
+	public static final Dimension LBL_SIZE = new Dimension(70, 50);
+	
+	private Date today;
+	private int year;
+	private int month;
+	
+	private JLabel[] lblWeek;
+	private JLabel[] lblDay;
+	
+	private String[] weeks = {"SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"};
+	private int[] MAX_DAYS = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};		//윤년x의 매달 최대일수
+	private int[] LEAP_MAX_DAYS = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	
+	private JLabel lblTmp;
+	
+	//StudyMemo에서 today, year, month 값을 받아온다
+	public MyCalendar(Date today, int year, int month) {
+		this.today = today;
+		this.year = year;
+		this.month = month;
+		init();
+		addListeners();
+	}
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	public int getMonth() {
+		return month;
+	}
+	public void setMonth(int month) {
+		this.month = month;
+	}
+	private void init() {
+		//lblWeek = new JLabel[7]
+		lblWeek = new JLabel[weeks.length];
+		//for(int idx = 0; idx < 7; idx++) 
+		for(int idx = 0; idx < lblWeek.length; idx++) {
+			lblWeek[idx] = new JLabel(weeks[idx], JLabel.CENTER);
+			lblWeek[idx].setPreferredSize(LBL_SIZE);
+			lblWeek[idx].setOpaque(true);
+			lblWeek[idx].setForeground(Color.WHITE);
+			lblWeek[idx].setFont(new Font(Font.DIALOG, Font.BOLD, 20));
+			lblWeek[idx].setBorder(new LineBorder(Color.WHITE, 2));
+			if(weeks[idx].equals("SUN")) {
+				lblWeek[idx].setBackground(new Color(241, 95, 95));
+			} else if (weeks[idx].equals("SAT")) {
+				lblWeek[idx].setBackground(new Color(36, 120, 255));
+			} else {
+				lblWeek[idx].setBackground(new Color(76, 76, 76));
+			}
+		}
+		Calendar cal = Calendar.getInstance();
+		
+		//year = 2020, month = 6
+		lblDay = new JLabel[getMaxDayOfMonth(year, month)];
+		//lblDay = new JLabel[30];
+		for(int idx = 0; idx <lblDay.length; idx++) {
+			lblDay[idx] = new JLabel(String.valueOf(idx+1), JLabel.CENTER);
+			lblDay[idx].setPreferredSize(LBL_SIZE);
+			lblDay[idx].setOpaque(true);
+			lblDay[idx].setBackground(Color.WHITE);
+			lblDay[idx].setForeground(Color.BLACK);
+			lblDay[idx].setFont(new Font(Font.DIALOG, Font.BOLD, 15));
+			
+			//int date = 1
+			int date = idx + 1;
+			//year = 2020, month = 6, date =  1
+			cal.set(Calendar.YEAR, year);
+			cal.set(Calendar.MONTH, month-1);
+			cal.set(Calendar.DATE, date);
+			
+			//DAY_OF_WEEK -- > 해당 날짜의 요일값을 숫자로 출력해줌
+			//1. 일요일 2. 월요일 3. 화요일 4. 수요일 5. 목요일 6. 금요일 7. 토요일
+			if(cal.get(Calendar.DAY_OF_WEEK) == 1) {
+				//일요일 일때 글자색을 빨강으로 지정
+				lblDay[idx].setForeground(new Color(241, 95, 95));
+			} else if (cal.get(Calendar.DAY_OF_WEEK) == 7) {
+				//토요일 일때  글자색을 파랑으로 지정
+				lblDay[idx].setForeground(new Color(36,120,255));
+			} else {
+				//나머지 요일 일때 글자색을 검정으로 지정
+				lblDay[idx].setForeground(Color.BLACK);
+			}
+			
+			//today = new Date();
+			Calendar calToday = Calendar.getInstance();
+			calToday.setTime(today);
+			
+			int todayYear = calToday.get(Calendar.YEAR);		//오늘 년
+			int todayMonth = calToday.get(Calendar.MONTH) + 1;	//오늘 달
+			int todayDate = calToday.get(Calendar.DATE);		//오늘 일 (10)
+			
+			//오늘 년,월,일 과 내가 조회를 눌러서 설정한 날짜가 같을 경우에는
+			if(todayYear == year && todayMonth == month && todayDate == date) {
+				lblDay[idx].setBackground(new Color(255, 255, 210));
+			}
+		}
+		fileListLoad();
+	}
+	
+	public void fileListLoad() {
+		
+	}
+	public JPanel getCalPanel() {
+		JPanel pnlCal = new JPanel(new BorderLayout());
+		pnlCal.setBorder(new EmptyBorder(50, 20, 50, 20));
+		
+		JPanel pnlWeek = new JPanel(new GridLayout(1,7));
+		
+		for(int idx = 0; idx < lblWeek.length; idx++) {
+			pnlWeek.add(lblWeek[idx]);
+		}
+		JPanel pnlDay = new JPanel(new GridLayout(0, 7));
+		
+		//공백 개수 
+		int weekday = getWeekDay(year, month);
+		
+		for(int idx = 0; idx < weekday; idx++) {
+			JLabel lblSpace = new JLabel();
+			lblSpace.setPreferredSize(LBL_SIZE);
+			lblSpace.setOpaque(true);
+			lblSpace.setBackground(Color.white);
+			pnlDay.add(lblSpace);
+			//6월이면 공백 하나 붙이고
+		}
+		
+		for(int idx = 0; idx < lblDay.length; idx++) {
+			pnlDay.add(lblDay[idx]);
+			//나머지 숫자 붙임
+		}
+		
+		Calendar cal = Calendar.getInstance();
+	
+		int lastDay = getMaxDayOfMonth(year, month);
+		//lastDay = 30 
+	
+		cal.set(year,  month-1, lastDay);
+		//cal.set(2020, 6, 30)
+		int lastWeek = cal.get(Calendar.DAY_OF_WEEK);
+		//마지막 일의 요일을 숫자로 
+	}
+	//year = 2020, month = 6
+	private int getWeekDay(int year, int month) {
+		Calendar date = Calendar.getInstance();
+		date.set(Calendar.YEAR, year);	//2020
+		date.set(Calendar.MONTH, month-1);	//6	
+		date.set(Calendar.DATE, 1);			//1
+		
+		//int weekday = 공백  
+		//DAY_OF_WEEK - 1 = 0 이면 공백 X 
+		//DAY_OF_WEEK - 1 = 1이면 공백 1개이고 뒤에 공백은 4개
+		//DAY_OF_WEEK - 1 = 2이면 공백 2개이고 뒤에 공백 3개
+		//DAY_OF_WEEK - 1 = 3이면 공백 3개이고 뒤에 공백 1개 
+		//DAY_OF_WEEK - 1 = 4이면 공백 4개이고 뒤에 공백 1개
+		//DAY_OF_WEEK - 1 = 5이면 공백 5개이고 뒤에 공백 
+		//DAY_OF_WEEK - 1 = 6이면 공백 6개
+		int weekday = date.get(Calendar.DAY_OF_WEEK) - 1;
+		return weekday;	//공백 개수 
+	}
+	
+	//예를 들어서 year = 2020, month = 6
+	//1. 일요일 2. 월요일 3. 화요일 4. 수요일 5. 목요일 6. 금요일 7. 토요일
+	public int getMaxDayOfMonth(int year, int month) {
+		if(isLeapYear(year)) {
+			//윤년이면 
+			return LEAP_MAX_DAYS[month-1];
+			//LEAP_MAX_DAYS[5]
+			//30을 리턴
+		} else {
+			//윤년이 아니면
+			return MAX_DAYS[month-1];
+			//LEAP_MAX_DAYS[5]
+		}
+	}
+
+	public boolean isLeapYear(int year) {
+		if(year % 4 == 0 && (year % 100 != 100 || year % 400 == 0)) {
+			//윤년이면 true
+			return true;
+		} else {
+			//윤년이 아니면 false
+			return false;
+		}
+	}
+}

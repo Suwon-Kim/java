@@ -1,0 +1,144 @@
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
+public class UI_Test extends JFrame {
+	private static final int TF_SIZE = 15;
+	
+	private JLabel lblId;
+	private JLabel lblPassword;
+	private JLabel lblName;
+	private JLabel lblSex;
+	private JLabel lblBirth;
+	
+	private JTextField tfId;
+	private JTextField pfPassword;
+	private JTextField tfName;
+	
+	private JRadioButton rbMale;
+	private JRadioButton rbFemale;
+	
+	private JComboBox<String> cbYears;
+	private JComboBox<String> cbMonths;
+	private JComboBox<String> cbDays;
+	
+	private String[] years = new String[51];
+	private String[] months = new String[13];
+	private String[] days = new String[32];
+	
+	private JCheckBox[] cbHobby = new JCheckBox[6];
+	private String[] hobby = {"강도","절도","폭력","사기","협박","공갈"};
+	
+	private JButton btnOk;
+	private JButton btnCancel;
+	
+	public UI_Test() {
+		init();
+		setDisplay();
+		showFrame();
+	}
+	private void init() {
+		lblId = new JLabel("아이디", JLabel.LEFT);
+		lblPassword = new JLabel("비밀번호", JLabel.LEFT);
+		lblName = new JLabel("이름", JLabel.LEFT);
+		lblSex = new JLabel("성별", JLabel.LEFT);
+		lblBirth = new JLabel("생년월일", JLabel.LEFT);
+		
+		tfId = new JTextField(TF_SIZE);
+		pfPassword = new JPasswordField(TF_SIZE);
+		tfName = new JTextField(TF_SIZE);
+		
+		rbMale = new JRadioButton("남자",true);
+		rbFemale = new JRadioButton("여자");
+		
+		int year = 1970;
+		for(int i = 0; i < years.length - 1; i++) {
+			years[i] = String.valueOf(year);
+			year++;
+		}
+		cbYears = new JComboBox<String>(years);
+		
+		int month = 1;
+		for(int i = 0; i < months.length - 1; i++) {
+			months[i] = String.valueOf(month);
+			month++;
+		}
+		cbMonths = new JComboBox<String>(months);
+		
+		int day = 1;
+		for(int i = 0; i < days.length -1; i++) {
+			days[i] = String.valueOf(day);
+			day++;
+		}
+		cbDays = new JComboBox<String>(days);
+	
+		for(int i = 0; i < hobby.length; i++) {
+			cbHobby[i] = new JCheckBox(hobby[i]);
+		}
+		btnOk = new JButton("확인");
+		btnCancel = new JButton("취소");
+	}
+	private void setDisplay() {
+		JPanel pnlMain = new JPanel(new GridLayout(0,1));
+		
+		JPanel pnlNorth = new JPanel();
+		JPanel pnlId = new JPanel();
+		pnlId.add(lblId);
+		pnlId.add(tfId);
+		
+		JPanel pnlPw = new JPanel();
+		pnlPw.add(lblPassword);
+		pnlPw.add(pfPassword);
+		
+		JPanel pnlName = new JPanel();
+		pnlName.add(lblName);
+		pnlName.add(tfName);
+		
+		JPanel pnlSex = new JPanel();
+		pnlSex.add(lblSex);
+		pnlSex.add(rbMale);
+		pnlSex.add(rbFemale);
+		
+		JPanel pnlBirth = new JPanel();
+		pnlBirth.add(lblBirth);
+		pnlBirth.add(cbYears);
+		pnlBirth.add(new JLabel("년"));
+		pnlBirth.add(cbMonths);
+		pnlBirth.add(new JLabel("월"));
+		pnlBirth.add(cbDays);
+		pnlBirth.add(new JLabel("일"));
+		
+		pnlNorth.add(pnlId);
+		pnlNorth.add(pnlPw);
+		pnlNorth.add(pnlName);
+		pnlNorth.add(pnlSex);
+		pnlNorth.add(pnlBirth);
+		
+		add(pnlNorth, BorderLayout.NORTH);
+		
+		JPanel pnlCenter = new JPanel();
+		
+		JPanel pnlSouth = new JPanel();
+		
+	}
+	private void showFrame() {
+		setTitle("Join Form");
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		pack();
+		setVisible(true);
+	}
+
+	public static void main(String[] args) {
+		new UI_Test();
+	}
+}
