@@ -1,0 +1,17 @@
+
+public class RunningTest {
+	public static void main(String[] args) {
+		SomeThread t1 = new SomeThread("A");
+		SomeThread t2 = new SomeThread("B");
+		SomeThread t3 = new SomeThread("C");
+		
+//		  t1.setPriority(Thread.MIN_PRIORITY);
+//		  t2.setPriority(Thread.NORM_PRIORITY);
+//		  t3.setPriority(Thread.MAX_PRIORITY);	 
+		 
+	
+		t1.start();
+		t2.start();
+		t3.start();
+	}
+}

@@ -1,0 +1,9 @@
+
+public class RunnableThreadTest {
+	public static void main(String[] args) {
+		//Thread 생성자에 RunnableThread 인스턴스를 파라미터로 전달
+		Thread t = new Thread(new RunnableThread());
+		t.start();
+		System.out.println("end of main");
+	}
+}

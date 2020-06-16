@@ -1,0 +1,8 @@
+
+public class RunnableThread implements Runnable {
+	//run()를 오버라이딩 하여 재정의
+	@Override
+	public void run() {
+		System.out.println("Runnable 인터페이스를 구현");
+	}
+}
