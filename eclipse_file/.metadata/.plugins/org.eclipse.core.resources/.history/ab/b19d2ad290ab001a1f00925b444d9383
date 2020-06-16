@@ -1,0 +1,120 @@
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.border.LineBorder;
+
+public class MyCalendar2 extends JFrame {
+	public static final Dimension LBL_SIZE = new Dimension(70,50);
+	
+	private Date today;
+	private int year;
+	private int month;
+	
+	private JLabel[] lblWeek = new JLabel[7];
+	private JLabel[] lblDay;
+	
+	private String[] weeks = {"SUN","MON","TUE","WED","THU","FRI","SAT"};
+	//MAX_DAYS[0] = 1¿ù, MAX_DAYS[1] = 2¿ù, MAX_DAYS[2] = 3¿ù
+	private int[] MAX_DAYS = {31,28,31,30,31,30,31,31,30,31,30,31};	//À±³â X
+	private int[] LEAP_MAX_DAYS = {31,29,31,30,31,30,31,31,30,31,30,31};//À±³â
+	
+	public MyCalendar2(Date today, int year, int month) {
+		this.today = today;
+		this.year = year;
+		this.month = month;
+		init();
+		setDisplay();
+		addListeners();
+		showFrame();
+	}
+
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	public int getMonth() {
+		return month;
+	}
+	public void setMonth(int month) {
+		this.month = month;
+	}
+	private boolean isLeapYear(int year) {
+		if(year % 4 == 0 && (year % 100 != 100 || year % 400 == 0)) {
+			return true;	//À±³âÀÌ¸é true
+		} else {
+			return false;	//À±³âÀÌ ¾Æ´Ï¸é false;
+		}
+	}
+	
+	private int getMaxOfDay(int year, int month) {
+		if(isLeapYear(year)) {
+			return LEAP_MAX_DAYS[month-1];
+			//return 30
+		} else {
+			return MAX_DAYS[month-1];
+		}
+	}
+	private void init() {
+		for(int i = 0; i < weeks.length; i++) {
+			lblWeek[i] = new JLabel(weeks[i], JLabel.CENTER);
+			lblWeek[i].setPreferredSize(LBL_SIZE);
+			lblWeek[i].setOpaque(true);
+			lblWeek[i].setForeground(Color.WHITE);
+			lblWeek[i].setFont(new Font(Font.DIALOG, Font.BOLD, 20));
+			lblWeek[i].setBorder(new LineBorder(Color.WHITE, 2));
+			
+			if(weeks[i].equals("SUN")) {
+				lblWeek[i].setBackground(Color.RED);
+			} else if(weeks[i].equals("SAT")) {
+				lblWeek[i].setBackground(Color.BLUE);
+			} else {
+				lblWeek[i].setBackground(Color.BLACK);
+			}
+		}
+		Calendar cal = Calendar.getInstance();
+		
+		
+		//lblDay = new JLabel[30];
+		//i = 0; i < 30; i++
+		lblDay = new JLabel[getMaxOfDay(year,month)];
+		for(int i = 0; i < lblDay.length; i++) {
+			lblDay[i] = new JLabel(String.valueOf(i + 1), JLabel.CENTER);
+			lblDay[i].setPreferredSize(LBL_SIZE);
+			lblDay[i].setOpaque(true);
+			lblDay[i].setBackground(Color.WHITE);
+			lblDay[i].setForeground(Color.BLACK);
+			lblDay[i].setFont(new Font(Font.DIALOG, Font.BOLD, 15));
+			
+			int date = i + 1;
+			
+			cal.set(Calendar.YEAR, year);
+			cal.set(Calendar.MONTH, month-1);
+			cal.set(Calendar.DATE, date);
+			
+			if(cal.get(Calendar.))
+		}	
+	}
+	private void setDisplay() {
+		
+	}
+	private void addListeners() {
+		
+	}
+	private void showFrame() {
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		pack();
+		setVisible(true);
+	}
+	public static void main(String[] args) {
+		
+	}
+	
+}

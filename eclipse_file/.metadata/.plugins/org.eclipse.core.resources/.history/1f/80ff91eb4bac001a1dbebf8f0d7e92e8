@@ -1,0 +1,120 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.io.File;
+
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
+
+public class FileCopy extends JFrame {
+	private int fileInputSize = 20;
+	
+	private JTextField tfSrc;
+	private JTextField tfCopy;
+	
+	private JButton btnSrc;
+	private JButton btnCopy;
+	
+	private JTextField tfSize;
+	
+	private JButton btnRun;
+	
+	private JTextArea taResult;
+	
+	private JFileChooser chooser;
+	
+	private File srcFile;
+	private File copyFile;
+	
+	public FileCopy() {
+		init();
+		setDisplay();
+		addListeners();
+		showFrame();
+	}
+	
+	private void init() {
+		tfSrc = new JTextField(fileInputSize);
+		tfSrc.setEditable(false);
+		tfSrc.setBorder(new LineBorder(Color.GRAY, 1));
+		
+		tfCopy = new JTextField(fileInputSize);
+		tfCopy.setEditable(false);
+		tfCopy.setBorder(new LineBorder(Color.GRAY, 1));
+		
+		btnSrc = new JButton("선택");
+		btnCopy = new JButton("선택");
+		
+		tfSize = new JTextField(25);
+		tfSize.setHorizontalAlignment(JTextField.CENTER);
+		
+		btnRun = new JButton("복사");
+		
+		taResult = new JTextArea(6, 25);
+		taResult.setEditable(false);
+		
+		chooser = new JFileChooser("c:\\");
+	}
+	private void setTitledBorder(JComponent pnl, String title) {
+		pnl.setBorder(new TitledBorder(new LineBorder(Color.BLACK, 2), title));
+	}
+	//JComponent는 JPanel, JScrollPane, JFrame의 상위 //
+	private void setDisplay() {
+		JPanel pnlNorth = new JPanel(new GridLayout(0, 1));
+		
+		JPanel pnlSrc = new JPanel();
+		pnlSrc.add(tfSrc);
+		pnlSrc.add(btnSrc);
+		setTitledBorder(pnlSrc, "원본정보");
+		
+		JPanel pnlCopy = new JPanel();
+		pnlCopy.add(tfCopy);
+		pnlCopy.add(btnCopy);
+		setTitledBorder(pnlCopy, "복사본 정보");
+		
+		pnlNorth.add(pnlSrc);
+		pnlNorth.add(pnlCopy);
+		
+		JPanel pnlCenter = new JPanel(new BorderLayout());
+		
+		JPanel pnlSize = new JPanel();
+		pnlSize.add(tfSize);
+		setTitledBorder(pnlSize, "버퍼크기");
+		
+		JPanel pnlRun = new JPanel();
+		pnlRun.add(btnRun);
+		
+		JScrollPane scroll = new JScrollPane(taResult);
+		setTitledBorder(scroll, "실행결과");
+		
+		pnlCenter.add(pnlSize, BorderLayout.NORTH);
+		pnlCenter.add(pnlRun, BorderLayout.CENTER);
+		pnlCenter.add(scroll, BorderLayout.SOUTH);
+		
+		add(pnlNorth, BorderLayout.NORTH);
+		add(pnlCenter, BorderLayout.CENTER);
+		
+	}
+	private void addListeners() {
+		
+	}
+	private void showFrame() {
+		setTitle("파일복사");
+		pack();
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+	public static void main(String[] args) {
+		new FileCopy();
+	}
+	
+}
