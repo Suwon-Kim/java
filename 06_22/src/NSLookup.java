@@ -8,7 +8,23 @@ public class NSLookup {
 		String domain = JOptionPane.showInputDialog(
 			"도메인을 입력하시오"
 		); 
-		//InetAddress는  IP 정보를 표현하는 객체
+		
+		InetAddress inetaddr[] = null;
+		try {
+			inetaddr = InetAddress.getAllByName(domain);
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+		for(int i = 0; i < inetaddr.length; i++) {
+			System.out.println(inetaddr[i].getHostName());
+			System.out.println(inetaddr[i].getHostAddress());
+			System.out.println(inetaddr[i].toString());
+			System.out.println("-------------------------");
+		}
+	}
+}
+
+//InetAddress는  IP 정보를 표현하는 객체
 		//IP --> 특정한 네트워크망이 있다면 컴퓨터가 통신하고 싶은 또 다른 디바이스를 찾아 가야하는데
 		//네트워크에 물려있는 장비들이 대게 많다. 연결하고 싶은 대상을 무엇으로 구분하는가 ? 
 		//IP로 구분한다 동일한 네트워크망 상에 존재하는 디바이스들의 식별자 (IP)
@@ -25,17 +41,3 @@ public class NSLookup {
 		//시킬수 있는 메뉴가 정해져있다 니가 요청해주는걸 전부 해주지 않는다...
 		//통신규약이란 서버와 클라이언트끼리 서로 약속되어있는 규정 우리가 요청할 때 맞게끔 요청 해야
 		//서버에서도 응답을 해준다.사전에 약속이 되어 있어야한다 --> 
-		InetAddress inetaddr[] = null;
-		try {
-			inetaddr = InetAddress.getAllByName(domain);
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		}
-		for(int i = 0; i < inetaddr.length; i++) {
-			System.out.println(inetaddr[i].getHostName());
-			System.out.println(inetaddr[i].getHostAddress());
-			System.out.println(inetaddr[i].toString());
-			System.out.println("-------------------------");
-		}
-	}
-}
