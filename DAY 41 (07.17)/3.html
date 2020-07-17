@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style>
+		table {
+		margin: 0 auto;
+		width : 80%;
+			border-collapse: collapse;
+		}
+		td {
+			border: 1px solid black;
+		}
+		#headerRow {	
+			background-color:gray;
+		}
+		.listData:hover{
+			background-color:blue;
+			cursor : pointer;
+		}
+		<script>
+			
+		</script>
+
+  </style>
+</head>
+<!-- 값을 부를때는 #을 사용한다 -->
+<!-- id는 특정한 하나를 선택할 때 사용 하는 놈 class는 복수개를 선택 할 때 사용 하는 놈 -->
+<!-- class는 동일한거를 사용 할 수 있다 -->
+<!-- class를 호출할 때는 .을 이용한다 -->
+
+<body>
+  <table>
+  <tr id = "headerRow">
+	<td>번호</td>
+	<td>제목</td>
+	<td>글쓴이</td>
+  </tr>
+  <tr class = "listData" onclick = "clickList()">
+	<td>3</td>
+	<td>안녕</td>
+	<td>고동관</td>
+  </tr>
+  <tr class = "listData">
+	<td>2</td>
+	<td>행님 뭐합니까?</td>
+	<td>김기호</td>
+  </tr>
+  <tr class = "listData">
+	<td>1</td>
+	<td>응 ?</td>
+	<td>박성원</td>
+  </tr>
+  </table>
+</body>
+</html>

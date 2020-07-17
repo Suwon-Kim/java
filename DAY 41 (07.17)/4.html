@@ -1,0 +1,35 @@
+<!-- 폼 태그는 클라이언트측에서 서버로 값을 전송할 때 사용하는 태그이다. 안에 여러가지 값을 담을 수 있는 입력 양식을 만드는
+태그를 포함할 수 있다.
+<form name = "formal1' method = "전송박식" action = "전송된 데이터를 받는 곳">
+</form>
+name은 식별자 
+method는 전송하는 방식 (get, post)
+action은 서버에 어디로 보낼껀지를 결정함 submit이 실행되면 해당 URL로 데이터가 전송된다. 
+name은 값의 식별자이다 (중요)! 
+ -->
+<!-- 이름을 입력하시오 <input type = "text" name = "userName" value = "박성원"/> -->
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<form>
+		선택 1 <input type = "radio" name = "abc" value = "a"/>	<!--a의 값이 서버로 넘어감  -->
+		<br>
+		선택 2 <input type = "radio" name = "abc" value = "b"/>
+		<br>
+		<textarea name = "userDesc " cols = "40" rows = "5">밥묵자~</textarea>
+		<br>
+		<label for = "userName">이름을 입력하시오</label>
+		<input id = "userName" type = "text" name = "userName" value = "박성원" 
+		readonly = "readonly" disabled = "disabled" /> <!-- 읽기전용만 됨 (2개 다) -->
+		<br>
+		<label for = "userPw">패스워드를 입력하시오</label>
+		<input type = "password" name = "userPw" />
+ 		
+	</form>
+  <title></title>
+</head>
+<body>
+ 
+</body>
+</html>
