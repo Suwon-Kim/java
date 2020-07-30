@@ -1,0 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import = "kr.ac.green.Article "%>
+<%@ page import = "java.util.Vector "%>
+<!-- 눈에 보이지 않는 페이지라서 필요 없음 밑에 설정같은것이 addArticle.jsp -->
+<%
+	request.setCharacterEncoding("euc_kr");
+	String title = request.getParameter("title");
+%>

@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import = "java.util.Vector" %>
+<%@ page import = "kr.ac.green.Article" %>
+<%
+	int num = Integer.parseInt(request.getParameter("num"));
+
+	Vector<Article> list = (Vector<Article>) application.getAttribute("list");
+	Article article = list.get(list.indexOf(new Article(num)));	
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv = "Content-Type" content = "text/html"; charset = EUC-KR">
+<title>readArticle</title>
+</head>
+<body>
+	<%= request.getParameter("num") %>
+	
+	<form id = "modifyForm " method = "post">
+		번호 : <input type = "text" name = "num" value = "<%= article.getTitle() %>" readonly = "readonly" />
+		<br>
+		글쓴이 : <input type = "text" name = "title" value = "<%= article.getWriter() %>" readonly = "readonly" />
+		<br>
+		
+		
+	</form>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import = "org.doo.*" %>
+<%
+	Member member = (Member)session.getAttribute("member");
+
+	if(member == null) {
+		session.setAttribute("msg", "잘못된 접근입니다.");
+%>
+	<<jsp:forward page="loginForm.jsp"></jsp:forward>
+<%
+	}
+%>

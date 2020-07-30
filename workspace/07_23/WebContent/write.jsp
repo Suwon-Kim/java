@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>write.jsp</title>
+<%--
+	번호, 제목, 내용, 글쓴이, 작성일, 비밀번호
+--%>
+</head>
+<body>
+	<form action = "list.jsp" method = "post">
+	<input type = "text" name = "title" placeholder ="제목"/>
+	<br>
+	<input type = "text" name = "writer" placeholder = "글쓴이" />
+	<br>
+	<input type = "password" name = "pw" placeholder = "비밀번호" />
+	<br>
+	<textarea name = "contents" rows = "5" cols = "50" placeholder = "내용을 입력하세요 "></textarea>
+	<br>
+	<input type = "submit" />
+	<input type = "reset" />
+	</form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<%@ page import="java.util.Vector"%>
+<%@ page import="kr.ac.green.Article"%>
+
+<%--
+	번호, 제목, 내용, 글쓴이, 작성일, 비밀번호
+--%>
+
+<html>
+<head>
+<title>list.jsp</title>
+<body>
+<%
+	String msg = "어서오세요";
+
+%>
+
+
+</body>
+</head>
+</html>

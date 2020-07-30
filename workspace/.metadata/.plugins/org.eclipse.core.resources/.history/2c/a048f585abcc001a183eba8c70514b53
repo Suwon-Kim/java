@@ -1,0 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<%@ page import="java.util.Vector"%>
+<%@ page import="kr.ac.green.Article"%>
+넘어오나?

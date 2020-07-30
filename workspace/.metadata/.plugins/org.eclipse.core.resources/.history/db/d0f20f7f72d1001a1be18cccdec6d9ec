@@ -1,0 +1,15 @@
+package kr.ac.green;
+
+public class Article {
+	private String title;
+	private String writer;
+	private String contents;
+	private String pw;
+	
+	public Article(String title, String writer, String contents, String pw) {
+		this.title = title;
+		this.writer = writer;
+		this.contents = contents;
+		this.pw = pw;
+	}
+}

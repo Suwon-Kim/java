@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>write.jsp</title>
+<%--
+	번호, 제목, 내용, 글쓴이, 작성일, 비밀번호
+--%>
+</head>
+<body>
+	
+</body>
+</html>

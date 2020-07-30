@@ -1,0 +1,16 @@
+package kr.ac.green;
+
+import java.util.Date;
+
+
+//번호, 제목, 내용, 글쓴이, 작성일, 비밀번호
+
+public class Article {
+	private int num;	//번호
+	private String title; //글 제목
+	private String contents; //글 내용
+	private String writer; //글쓴이
+	private Date date;
+	private String pw; //비밀번호
+	
+}

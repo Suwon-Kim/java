@@ -1,0 +1,24 @@
+package org.doo.Member;
+
+import java.util.Vector;
+
+public class MemberManager {
+	public static Member getBlankMember() {
+		Member member = new Member();
+		member.setU_id("");
+		member.setU_name("");
+		member.setU_nick("");
+		member.setU_pw("");
+		
+		return member;
+	}
+	public static Vector<Member> getMemberList(ServeletContext application) {
+		Vector<Member> memberList = (Vector<Member>) application.getAttribute("memberList");
+		
+		if(memberList == null) {
+			memberList = new Vector<Member>();
+			application.setAttribute("memberList", memberList);
+		}
+		return memberList;
+	}
+}

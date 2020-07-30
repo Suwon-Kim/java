@@ -1,0 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import = "kr.ac.green.Article" %>
+<%@ page import = "java.util.Vector" %>
+<%
+	request.setCharacterEncoding("euc_kr");
+
+	String title = request.getParameter("title");
+%>

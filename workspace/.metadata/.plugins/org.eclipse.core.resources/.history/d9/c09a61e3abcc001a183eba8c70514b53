@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<%@ page import="java.util.Vector"%>
+<%@ page import="kr.ac.green.Article"%>
+
+<%--
+	번호, 제목, 내용, 글쓴이, 작성일, 비밀번호
+--%>
+
+<html>
+<head>
+<title>list.jsp</title>
+<body>
+	<a href = "write.jsp">글 등록</a>
+	<hr>
+	<table>
+		<tr>
+			<th>번호</th>
+			<th>제목</th>
+			<th>글쓴이</th>
+			<th>작성일</th>
+			
+	</table>
+
+
+</body>
+</head>
+</html>

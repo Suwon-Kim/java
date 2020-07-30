@@ -1,0 +1,53 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import = "org.doo.*" %>
+<%
+	String msg = (String)session.getAttribute("msg");
+	if(msg == null) {
+		msg = "모든 항목은 필수입력 입니다.";
+	}
+	Member member = (Member)session.getAttribute("tempMember");
+	if(member == null) {
+		member = MemberManager.getBlankMember();
+	}
+	session.removeAttribute("tempMember");
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+<link rel = "stylesheet" type = "text/css" href = "css/main.css">
+<script>
+	function checkAndMove() {
+		var obj = document.joinForm;
+		
+		var flag = true;
+		for(var i = 0; flag && i < obj.length; i++) {
+			if(obj[i].type.toLowerCase() != "button") {
+				if(obj[i].value.trim().length == 0) {
+					document.getElementById("msg").innerHTML = 
+						"필수입력항목 누락 : " + obj[i].title;
+						flag = false;
+				}
+			}
+		}
+	}
+	
+	if(flag) {
+		if(obj.u_pw.value != obj.u_re.value) {
+			document.getElementById("msg").innerHTML = "비밀번호가 일치 하지 않습니다.";
+			flag = false;
+		}
+	}
+	if(flag) {
+		obj.method = "post";
+		obj.action = "doJoin.jsp";
+		obj.submit();
+	}
+</script>
+</head>
+<body>
+
+</body>
+</html>

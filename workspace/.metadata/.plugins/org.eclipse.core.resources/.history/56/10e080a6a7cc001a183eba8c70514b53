@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import = "java.util.*"%>
+<%@ page import = "kr.ac.green.Article" %>
+<%
+	request.setCharacterEncoding("euc_kr");
+
+	int num = Integer.parseInt(request.getParameter("num"));
+	String title = request.getParameter("title");
+	String contents = request.getParameter("contents");
+	
+	Vector<Article> list = (Vector<Article>)application.getAttribute("list");
+	Article original = list.get(list.indexOf(new Article(num)));
+	
+	if(pw.equals(original.getPw())) {
+		
+	} else {
+		
+	}
+	original.setTitle(title);
+	original.setContents(contents);
+%>

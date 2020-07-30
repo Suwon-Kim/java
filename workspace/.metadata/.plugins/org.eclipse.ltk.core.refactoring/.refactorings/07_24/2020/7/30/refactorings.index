@@ -1,0 +1,13 @@
+1595558058069	Move 'bottom.jsp' to 'module'
+1595558063442	Move 'left.jsp' to 'module'
+1595558065603	Move 'top.jsp' to 'module'
+1595558161525	Move 'layout.jsp' to 'module'
+1595558186364	Move 4 resources to 'WebContent'
+1595558194927	Delete element
+1595559590385	Delete element
+1595560228422	Rename resource 'log.jsp'
+1595560636662	Rename resource 'contentA.jsp'
+1595560645195	Rename resource 'ContentB.jsp'
+1595560801349	Rename resource 'ContentsB.jsp'
+1595561114997	Delete element
+1595568183610	Rename resource 'includee.jsp'

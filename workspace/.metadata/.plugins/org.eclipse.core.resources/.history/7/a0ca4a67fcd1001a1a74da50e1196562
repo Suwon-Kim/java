@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<%
+	String msg = (String) session.getAttribute("msg");
+
+	if(msg == null) {
+		msg = "어서오세요";
+	}
+%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>LoginForm</title>
+<link rel = "stylesheet type = "text/css" href = "css/main.css">
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+package org.doo.Member;
+
+public class MemberManager {
+	public static Member getBlankMember() {
+		Member member = new Member();
+		member.setU_id("");
+		member.setU_name("");
+		member.setU_nick("");
+		member.setU_pw("");
+	}
+}
