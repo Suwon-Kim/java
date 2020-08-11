@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import = "org.docs.beans.*"%>
+<%
+	Doc[] list = (Doc[]) request.getAttribute("list");
+	if(list == null || list.length == 0) {
+%>
+	<tr>
+		<td colspan = "4" >No Data</td>
+	</tr>
+<%
+	} else {
+		for(int idx = 0; idx < list.length; idx++) {
+%>
+
+	<tr class = "doc">
+		<td><%= list[idx].getD_num() %></td>
+		<td><%= list[idx].getD_title() %></td>
+		<td><%= list[idx].getD_author() %></td>
+		<td><%= list[idx].getD_date() %></td>
+	</tr>
+	<tr>
+		<td colspan = "4">
+			<div id = "contents">
+			<%= list[idx].getD_content() %>
+			</div>
+			<form action = "<%= request.getContextPath() %>/MainServlet" method = "post">
+				<div id = "btn">
+				<input type = "submit" value = "delete" />
+				</div>
+				<input type = "hidden" name = "cmd" value = "delete" id = "btnDel" />
+				<input type = "hidden" name = "d_num" value = "<%= list[idx].getD_num() %>" />
+			</form>
+		</td>
+	</tr>
+<%
+		}
+	}
+%>

@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%
+	int pageNum = (Integer)request.getAttribute("pageNum");
+	int pageCount = (Integer)request.getAttribute("pageCount");
+	
+	
+	for(int i = 1; i <= pageCount; i++) {
+		if(pageNum != i) {
+%>
+	<span class = "linkStyle" onclick = "goPage(<%= i %>)">[<%= i %>]</span>
+<%	
+	} else {
+%>
+	<span class = "normalStyle">[<%= i %>]</span>
+<%
+		}
+	}
+%>
+<form name = "pagingForm" action = "<%= request.getContextPath() %>/MainServlet">
+	<input type = "hidden" name = "pageNum" />
+	<input type = "hidden" name = "cmd" value = "getAll" />
+</form>
