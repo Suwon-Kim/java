@@ -1,0 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<%@ page import="org.docs.beans.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:choose>
+	<c:when test="${ empty list }">
+		<tr>
+			<td colspan="4">No Data</td>
+		</tr>
+	</c:when>
+	<c:otherwise>
+		<c:forEach var="temp" items="${ list }">
+			<tr class="doc">
+				<td>${ temp.d_num }</td>
+				<td>${ temp.d_title }</td>
+				<td>${ temp.d_author }</td>
+				<td>${ temp.d_date }</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<div id="contents">${ temp.d_content}</div>
+					<form action="${ pageContext.request.contextPath }/MainServlet"method="post">  
+						<div id="btn">  
+							<input type="submit" value="delete" />
+						</div>
+						<input type="hidden" name="cmd" value="delete" id="btnDel" /> <input
+							type="hidden" name="d_num" value="${ temp.d_num }" />
+					</form>
+				</td> 
+			</tr>
+		</c:forEach>
+	</c:otherwise>
+</c:choose>
+

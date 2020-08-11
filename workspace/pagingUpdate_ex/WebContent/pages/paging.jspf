@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+	<!-- for(i(var) = 1(begin); i < pageCount; i++(step)) -->
+	<c:forEach var="i" begin="1" end="${ pageCount }" step="1">
+		<c:choose>
+			<c:when test = "${ pageNum != i }">
+				<span class = "linkStyle" onclick = "goPage(${ i })">[${ i }]</span>			
+			</c:when> 
+			<c:otherwise>  
+				<span class = "normalStyle">[${ i }]</span>
+			</c:otherwise>
+		</c:choose>
+	</c:forEach>
+
+<form name = "pagingForm" action = "${ pageContext.request.contextPath }/MainServlet">
+	<input type = "hidden" name = "pageNum" />
+	<input type = "hidden" name = "cmd" value = "getAll" />
+</form>
